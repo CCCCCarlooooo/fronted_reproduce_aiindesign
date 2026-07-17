@@ -1,0 +1,14 @@
+# Agent / local tooling
+.omc/
+.omx/
+.claude/
+.cursor/
+.DS_Store
+Thumbs.db
+
+# Editor / OS
+*.swp
+*.swo
+*~
+.idea/
+.vscode/

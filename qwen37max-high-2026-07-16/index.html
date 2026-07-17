@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI in Design Report 2026</title>
+  <meta name="description" content="Second annual report by Designer Fund and Foundation Capital on how design teams are adapting to AI across tooling, craft, and org.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#F7F6F4',
+            accent: { purple: '#CDABFE', orange: '#FE7141', cyan: '#99EEFF', lime: '#F0FF1C', sage: '#D1DDD3' }
+          },
+          fontFamily: {
+            serif: ['"DM Serif Display"', '"Beausite Classic Medium"', 'Georgia', 'serif'],
+            body: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"Geist Mono"', '"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- GSAP 3 + ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Local Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-white text-black font-body overflow-x-hidden">
+
+  <!-- Preloader -->
+  <div id="preloader" class="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-logo">D F</div>
+      <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- Canvas Overlay for particle effects -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Fixed Left Navigation -->
+  <nav id="main-nav" class="main-nav">
+    <div class="nav-links">
+      <a href="https://example.com/" class="nav-link">
+        <span class="nav-link-text">About</span>
+        <span class="nav-link-text-hover">About</span>
+      </a>
+      <div class="nav-link nav-dropdown-trigger" id="case-studies-trigger">
+        <span class="nav-link-text">Case Studies</span>
+        <span class="nav-link-text-hover">Case Studies</span>
+      </div>
+    </div>
+    <div class="nav-chapters">
+      <a href="https://example.com/" class="nav-chapter-link">
+        <span>Tools</span><span class="nav-chapter-num">01</span>
+      </a>
+      <a href="https://example.com/" class="nav-chapter-link">
+        <span>Craft</span><span class="nav-chapter-num">02</span>
+      </a>
+      <a href="https://example.com/" class="nav-chapter-link">
+        <span>Teams</span><span class="nav-chapter-num">03</span>
+      </a>
+    </div>
+    <div class="nav-copyright">©2026 DESIGNER FUND, FOUNDATION CAPITAL. ALL RIGHTS RESERVED</div>
+
+    <!-- Case Studies Dropdown -->
+    <div class="nav-dropdown" id="case-studies-dropdown">
+      <a href="https://example.com/" class="nav-case-link">
+        <span>Framer</span><span class="nav-case-num">01</span><span class="nav-case-badge">Coming soon</span>
+      </a>
+      <a href="https://example.com/" class="nav-case-link">
+        <span>Sierra</span><span class="nav-case-num">02</span><span class="nav-case-badge">Coming soon</span>
+      </a>
+      <a href="https://example.com/" class="nav-case-link">
+        <span>Shopify</span><span class="nav-case-num">03</span><span class="nav-case-badge">Coming soon</span>
+      </a>
+      <a href="https://example.com/" class="nav-case-link">
+        <span>Notion</span><span class="nav-case-num">04</span><span class="nav-case-badge">Coming soon</span>
+      </a>
+      <a href="https://example.com/" class="nav-case-link">
+        <span>Stripe</span><span class="nav-case-num">05</span><span class="nav-case-badge">Coming soon</span>
+      </a>
+      <a href="https://example.com/" class="nav-case-link">
+        <span>Linear</span><span class="nav-case-num">06</span><span class="nav-case-badge">Coming soon</span>
+      </a>
+      <a href="https://example.com/" class="nav-case-link">
+        <span>Anthropic</span><span class="nav-case-num">07</span><span class="nav-case-badge">Coming soon</span>
+      </a>
+      <div class="nav-dropdown-copyright">©2026 DESIGNER FUND, FOUNDATION CAPITAL. ALL RIGHTS RESERVED</div>
+    </div>
+  </nav>
+
+  <!-- Top Right Logo (Sticky) -->
+  <div id="top-logo" class="top-logo">
+    <div class="df-logo">D F</div>
+  </div>
+
+  <!-- Scene 1: Hero -->
+  <section id="hero" class="hero-section">
+    <div class="hero-content">
+      <p class="hero-tagline">How designers are evolving their tools, craft, and teams with AI</p>
+      <h1 class="hero-title">AI in Design Report 2026</h1>
+      <p class="hero-byline">BY DESIGNER FUND IN PARTNERSHIP WITH FOUNDATION CAPITAL</p>
+      <a href="https://example.com/" class="hero-scroll-link" id="scroll-to-partners">
+        Scroll to read
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Scene 2: Our Partners -->
+  <section id="partners" class="partners-section">
+    <p class="section-label">OUR PARTNERS</p>
+    <div class="partners-logo-large">
+      <div class="df-logo-massive">D F</div>
+    </div>
+  </section>
+
+  <!-- Scene 3: An Inflection Point -->
+  <section id="inflection" class="inflection-section">
+    <p class="section-label anim-fade-up">AN INFLECTION POINT</p>
+    <h1 class="inflection-heading anim-fade-up">In 2025, designers were experimenting with AI. In 2026, they're rebuilding around it.</h1>
+
+    <div class="stats-row">
+      <div class="stat-item anim-fade-up">
+        <div class="stat-number"><span class="counter" data-target="900">0</span><span class="stat-plus">+</span></div>
+        <h4 class="stat-label">Designers surveyed in 60+ countries.</h4>
+      </div>
+      <div class="stat-item anim-fade-up">
+        <div class="stat-number"><span class="counter" data-target="20">0</span><span class="stat-plus">+</span></div>
+        <h4 class="stat-label">Interviews with practitioners and leaders</h4>
+      </div>
+    </div>
+
+    <div class="inflection-body anim-fade-up">
+      <p>AI in Design 2026 aims to capture how AI is transforming tech design across designers' desks and within their teams.</p>
+      <p>We ran our first AI in Design survey in early 2025 because we consistently heard designers and leaders ask, "How are others doing this, and what's working?" A year later, we're attempting to get a sense for what's changed and share firsthand perspectives.</p>
+      <p>The answers come from over 900 designers at startups, enterprises, and agencies who work across disciplines like product design, brand design, research, and design engineering. We also conducted over 20 interviews with leaders at companies actively navigating this shift.</p>
+      <p>Given how quickly practices are evolving, we'll continue to release new findings throughout the year, including case studies about design at companies like Anthropic, Sierra, Stripe, Notion, Shopify, Linear, and Framer. <a href="https://example.com/">Sign up for new releases.</a></p>
+    </div>
+  </section>
+
+  <!-- Scene 4: Pull Quote -->
+  <section id="quote" class="quote-section">
+    <div class="quote-layout">
+      <div class="quote-portrait anim-fade-up">
+        <img src="https://framerusercontent.com/images/rd6RC3C2g354mvaTXc22Z8hsrkI.png?width=2640&height=1478" alt="Katie Dill" class="quote-img" loading="lazy">
+      </div>
+      <div class="quote-text anim-fade-up">
+        <p class="quote-name">Katie Dill</p>
+        <p class="quote-role">HEAD OF DESIGN, STRIPE</p>
+        <h4 class="quote-body">"AI is sparking a creative renaissance in design. With new instruments, it's our chance to compose wholly new music."</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 5: Chapter 01 - Tools -->
+  <section id="ch-tools" class="chapter-section">
+    <div class="chapter-number anim-fade-up">01</div>
+    <h2 class="chapter-title anim-fade-up">Tools</h2>
+    <h1 class="chapter-heading anim-fade-up">The great toolstack shakeup</h1>
+    <p class="chapter-summary anim-fade-up">AI usage has surged, but the toolstack is still in flux. Designers are using double the number of off-the-shelf tools than they did in 2025, and they're building custom software with AI that matches how they like to work. As everyone rushes to keep up with new releases, reliable output quality remains the largest area for improvement.</p>
+    <p class="chapter-label anim-fade-up">IN THIS CHAPTER, WE'LL COVER:</p>
+    <ul class="chapter-list anim-fade-up">
+      <li>The most-used AI design tools</li>
+      <li>The toolstack that's multiplying</li>
+      <li>What makes tools stick (+ why many don't)</li>
+      <li>Designers as builders of their own tools</li>
+      <li>Tool fatigue and the pressure to keep up</li>
+    </ul>
+    <a href="https://example.com/" class="chapter-cta anim-fade-up">
+      Read the Tools Chapter
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+  <!-- Scene 6: Chapter 02 - Craft -->
+  <section id="ch-craft" class="chapter-section">
+    <div class="chapter-number anim-fade-up">02</div>
+    <h2 class="chapter-title anim-fade-up">Craft</h2>
+    <h1 class="chapter-heading anim-fade-up">Craft in the age of infinite output</h1>
+    <p class="chapter-summary anim-fade-up">Everyone is shipping faster. But is speed good for craft? AI has unlocked a new gear for designers: they're ideating faster, prototyping more, and learning to code. Half of respondents have pushed AI-generated code to production. At the same time, we hear concerns about craft atrophy and the loneliness of designing alongside AI instead of teammates.</p>
+    <p class="chapter-label anim-fade-up">IN THIS CHAPTER, WE'LL COVER:</p>
+    <ul class="chapter-list anim-fade-up">
+      <li>Coding as a core design skill</li>
+      <li>Prototyping as a default output</li>
+      <li>The tension between speed and quality</li>
+      <li>Preserving judgment and taste</li>
+      <li>The trend toward designers as builders</li>
+    </ul>
+    <a href="https://example.com/" class="chapter-cta anim-fade-up">
+      Read the Craft Chapter
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+  <!-- Scene 7: Chapter 03 - Teams -->
+  <section id="ch-teams" class="chapter-section">
+    <div class="chapter-number anim-fade-up">03</div>
+    <h2 class="chapter-title anim-fade-up">Teams</h2>
+    <h1 class="chapter-heading anim-fade-up">Redesigning the design org</h1>
+    <p class="chapter-summary anim-fade-up">AI gave designers new powers. Now organizations need to adapt. Roles are blurring as designers take on PM and engineering work, and vice versa. Hiring managers want AI fluency alongside a high bar for craft, vision, and storytelling. But few companies have updated performance reviews, team structures, or hiring practices to match how the work has changed.</p>
+    <p class="chapter-label anim-fade-up">IN THIS CHAPTER, WE'LL COVER:</p>
+    <ul class="chapter-list anim-fade-up">
+      <li>How companies support AI adoption</li>
+      <li>Blurring of design, PM, and engineering</li>
+      <li>The messy nature of collaboration</li>
+      <li>Changing expectations and company policy</li>
+      <li>What hiring managers are now looking for</li>
+    </ul>
+    <a href="https://example.com/" class="chapter-cta anim-fade-up">
+      Read the Teams Chapter
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+  <!-- Scene 8-10: Video Case Studies -->
+  <section id="case-studies" class="case-studies-section">
+    <h2 class="case-studies-label anim-fade-up">VIDEO CASE STUDIES</h2>
+    <h2 class="case-studies-heading anim-fade-up">Seven companies. Seven ways of navigating the same shift.</h2>
+
+    <div class="case-studies-grid">
+      <!-- Stripe -->
+      <a href="https://example.com/" class="case-card anim-fade-up">
+        <div class="case-card-image">
+          <img src="https://framerusercontent.com/images/sVDqVYB6apEiCQWv3SUiu02DuE.jpg?width=3840&height=2160" alt="Stripe" loading="lazy">
+          <div class="case-card-badge">05</div>
+          <div class="case-card-soon">Coming soon</div>
+        </div>
+        <div class="case-card-content">
+          <h3 class="case-card-company">Stripe</h3>
+          <p class="case-card-subtitle">Creating the conditions for Adoption</p>
+          <p class="case-card-desc">How do you build a culture that enables AI adoption instead of dictating the playbook?</p>
+          <span class="case-card-cta">Get notified</span>
+        </div>
+      </a>
+
+      <!-- Sierra -->
+      <a href="https://example.com/" class="case-card anim-fade-up">
+        <div class="case-card-image">
+          <img src="https://framerusercontent.com/images/vdlaU7hXYvHA03hPLaBqE2TMTIA.jpg?width=3840&height=2160" alt="Sierra" loading="lazy">
+          <div class="case-card-badge">02</div>
+          <div class="case-card-soon">Coming soon</div>
+        </div>
+        <div class="case-card-content">
+          <h3 class="case-card-company">Sierra</h3>
+          <p class="case-card-subtitle">Scaling craft, keeping the bar</p>
+          <p class="case-card-desc">How does a small design team supporting 100+ engineers protect craft without lowering the bar?</p>
+          <span class="case-card-cta">Get notified</span>
+        </div>
+      </a>
+
+      <!-- Anthropic -->
+      <a href="https://example.com/" class="case-card anim-fade-up">
+        <div class="case-card-image">
+          <img src="https://framerusercontent.com/images/9q6atfyxUQWgbbNEpOcKeKHVMo8.png?width=3840&height=2160" alt="Anthropic" loading="lazy">
+          <div class="case-card-badge">07</div>
+          <div class="case-card-soon">Coming soon</div>
+        </div>
+        <div class="case-card-content">
+          <h3 class="case-card-company">Anthropic</h3>
+          <p class="case-card-subtitle">When code is no longer the constraint</p>
+          <p class="case-card-desc">When AI writes most of the code, how should the design team operate?</p>
+          <span class="case-card-cta">Get notified</span>
+        </div>
+      </a>
+
+      <!-- Shopify -->
+      <a href="https://example.com/" class="case-card anim-fade-up">
+        <div class="case-card-image">
+          <img src="https://framerusercontent.com/images/aoiJOJb5U9lPHiXQOrywfzn8ftQ.png?width=3840&height=2160" alt="Shopify" loading="lazy">
+          <div class="case-card-badge">03</div>
+          <div class="case-card-soon">Coming soon</div>
+        </div>
+        <div class="case-card-content">
+          <h3 class="case-card-company">Shopify</h3>
+          <p class="case-card-subtitle">Growing as a designer</p>
+          <p class="case-card-desc">In a moment when the tools, skills, and expectations are all shifting at once, how can designers grow and thrive?</p>
+          <span class="case-card-cta">Get notified</span>
+        </div>
+      </a>
+
+      <!-- Notion -->
+      <a href="https://example.com/" class="case-card anim-fade-up">
+        <div class="case-card-image">
+          <img src="https://framerusercontent.com/images/qsqwQqO5XlCp5ZWs7hJuiL0Y.png?width=3840&height=2160" alt="Notion" loading="lazy">
+          <div class="case-card-badge">04</div>
+          <div class="case-card-soon">Coming soon</div>
+        </div>
+        <div class="case-card-content">
+          <h3 class="case-card-company">Notion</h3>
+          <p class="case-card-subtitle">Working alongside agents</p>
+          <p class="case-card-desc">What does it feel like to design alongside agents when the tools and workflows change but the philosophy doesn't?</p>
+          <span class="case-card-cta">Get notified</span>
+        </div>
+      </a>
+
+      <!-- Linear -->
+      <a href="https://example.com/" class="case-card anim-fade-up">
+        <div class="case-card-image">
+          <img src="https://framerusercontent.com/images/BjnduoVw73i89zvx0jvqhBI6pY.png?width=3840&height=2160" alt="Linear" loading="lazy">
+          <div class="case-card-badge">06</div>
+          <div class="case-card-soon">Coming soon</div>
+        </div>
+        <div class="case-card-content">
+          <h3 class="case-card-company">Linear</h3>
+          <p class="case-card-subtitle">Protecting the space to explore</p>
+          <p class="case-card-desc">As AI accelerates everything, how do you defend the slower, more deliberate parts of the design process?</p>
+          <span class="case-card-cta">Get notified</span>
+        </div>
+      </a>
+
+      <!-- Framer -->
+      <a href="https://example.com/" class="case-card anim-fade-up">
+        <div class="case-card-image">
+          <img src="https://framerusercontent.com/images/rd6RC3C2g354mvaTXc22Z8hsrkI.png?width=2640&height=1478" alt="Framer" loading="lazy">
+          <div class="case-card-badge">01</div>
+          <div class="case-card-soon">Coming soon</div>
+        </div>
+        <div class="case-card-content">
+          <h3 class="case-card-company">Framer</h3>
+          <p class="case-card-subtitle">Designing the design tools</p>
+          <p class="case-card-desc">When most AI tools optimize for generation, what does it look like to build one that protects design control instead?</p>
+          <span class="case-card-cta">Get notified</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Scene 11: Coming Soon Video -->
+  <section id="coming-soon" class="coming-soon-section">
+    <p class="section-label light anim-fade-up">COMING SOON</p>
+    <div class="coming-soon-video anim-fade-up">
+      <video autoplay muted loop playsinline poster="https://framerusercontent.com/images/LKdFBU4cZXjWWQJR62rMmwUFg.jpg?width=1920&height=1080">
+        <source src="https://framerusercontent.com/assets/GxhkDLcDBfujafaVJCiFKoxE.webm" type="video/webm">
+      </video>
+    </div>
+    <h3 class="coming-soon-heading anim-fade-up">Inside AI-native design teams</h3>
+    <p class="coming-soon-body anim-fade-up">Seven video case studies with the design teams at Anthropic, Framer, Linear, Notion, Shopify, Sierra, and Stripe. Go inside the workflows they've rebuilt, the tradeoffs they're navigating, and how they're operating differently as a team.</p>
+    <a href="https://example.com/" class="btn-notify anim-fade-up">
+      Get notified when they're released
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+  <!-- Scene 12: Subscribe -->
+  <section id="subscribe" class="subscribe-section">
+    <h2 class="subscribe-heading anim-fade-up">Get new case studies & report markdown</h2>
+    <h3 class="subscribe-subheading anim-fade-up">Download the markdown version of the report, ready to drop into any tool. Get notified as new case studies go live.</h3>
+    <form class="subscribe-form anim-fade-up" onsubmit="event.preventDefault();">
+      <input type="email" placeholder="Email address" required class="subscribe-input">
+      <button type="submit" class="subscribe-btn">Submit</button>
+    </form>
+    <p class="subscribe-legal anim-fade-up">By subscribing, you agree to receive communications from <a href="https://example.com/">Designer Fund</a> and <a href="https://example.com/">Foundation Capital</a> in accordance with their privacy policies.</p>
+  </section>
+
+  <!-- Scene 13: Methodology -->
+  <section id="methodology" class="methodology-section">
+    <h2 class="section-label anim-fade-up">METHODOLOGY</h2>
+    <p class="methodology-intro anim-fade-up">This report draws from</p>
+    <div class="methodology-stats">
+      <div class="method-stat anim-fade-up">
+        <div class="method-number"><span class="counter" data-target="900">0</span><span class="stat-plus">+</span></div>
+        <h6 class="method-label">Survey responses</h6>
+      </div>
+      <div class="method-stat anim-fade-up">
+        <div class="method-number"><span class="counter" data-target="20">0</span><span class="stat-plus">+</span></div>
+        <h6 class="method-label">Interviews</h6>
+      </div>
+      <div class="method-stat anim-fade-up">
+        <div class="method-number"><span class="counter" data-target="50">0</span><span class="stat-plus">+</span></div>
+        <h6 class="method-label">Public sources</h6>
+      </div>
+    </div>
+
+    <p class="section-label anim-fade-up">REPORT PARTNERS</p>
+    <div class="partner-logos anim-fade-up">
+      <a href="https://example.com/" class="partner-logo">Anthropic</a>
+      <a href="https://example.com/" class="partner-logo">Framer</a>
+      <a href="https://example.com/" class="partner-logo">Stripe</a>
+      <a href="https://example.com/" class="partner-logo">Sierra</a>
+      <a href="https://example.com/" class="partner-logo">Notion</a>
+      <a href="https://example.com/" class="partner-logo">Shopify</a>
+      <a href="https://example.com/" class="partner-logo">Linear</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer" class="site-footer">
+    <div class="footer-top">
+      <div class="footer-links">
+        <p class="footer-label">REPORT</p>
+        <a href="https://example.com/" class="footer-link">Read the Report</a>
+        <a href="https://example.com/" class="footer-link">About</a>
+        <a href="https://example.com/" class="footer-link">Case Studies</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright">©2026 Designer Fund, Foundation Capital. All rights reserved</p>
+      <div class="footer-logos">
+        <a href="https://example.com/" class="footer-brand-logo">DF</a>
+        <a href="https://example.com/" class="footer-brand-logo">FC</a>
+      </div>
+      <a href="https://example.com/" class="footer-credit">Made in Framer by ++hellohello</a>
+    </div>
+  </footer>
+
+  <!-- Local Script (after GSAP CDN) -->
+  <script src="script.js"></script>
+</body>
+</html>

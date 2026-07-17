@@ -1,0 +1,19 @@
+{
+  "three_files": true,
+  "all_anchors_example": true,
+  "all_forms_example": true,
+  "inline_style_tags": 0,
+  "inline_script_tags": 0,
+  "script_order": [
+    "https://cdn.tailwindcss.com",
+    "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js",
+    "script.js"
+  ],
+  "script_order_correct": true,
+  "classic_local_script": true,
+  "relative_stylesheet": true,
+  "canvas_present": true,
+  "canvas_vanilla_js": true,
+  "passed": true
+}

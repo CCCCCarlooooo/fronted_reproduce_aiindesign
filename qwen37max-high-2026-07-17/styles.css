@@ -1,0 +1,991 @@
+/* ===================================
+   AI in Design Report 2026 - Styles
+   =================================== */
+
+/* Font Faces - Beausite Classic Approximation */
+@font-face {
+  font-family: 'Beausite Classic Medium';
+  src: url('https://framerusercontent.com/assets/baACEtAZp9kYJq59uyXk29tfjUE.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Beausite Classic Regular';
+  src: url('https://framerusercontent.com/assets/Wqw1c5sXED5xQCM8PaZ7f1elFuw.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Beausite Classic Bold';
+  src: url('https://framerusercontent.com/assets/YDCWfdCkSc7C2mn3RfnQRFI4A.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #ffffff;
+  color: #000000;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 100vh;
+  background: rgba(205, 171, 254, 0.95);
+  padding: 40px 20px;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nav-link {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 18px;
+  color: #000;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.nav-link:hover {
+  opacity: 0.6;
+}
+
+.nav-section {
+  margin-top: 20px;
+}
+
+.nav-label {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 18px;
+  color: #000;
+  display: block;
+}
+
+.nav-button {
+  background: #FE7141;
+  color: #000;
+  padding: 12px 20px;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 16px;
+  margin: 20px 0;
+  transition: background 0.3s;
+}
+
+.nav-button:hover {
+  background: #ff8555;
+}
+
+.nav-button-text {
+  display: block;
+}
+
+.nav-chapter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 16px;
+  padding: 8px 0;
+  transition: opacity 0.3s;
+}
+
+.nav-chapter:hover {
+  opacity: 0.6;
+}
+
+.chapter-name {
+  font-weight: 500;
+}
+
+.chapter-num {
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.nav-copyright {
+  font-size: 10px;
+  color: #000;
+  margin-top: 30px;
+  line-height: 1.4;
+  opacity: 0.6;
+}
+
+.nav-cases {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-case {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #000;
+  padding: 8px 0;
+  transition: opacity 0.3s;
+}
+
+.nav-case:hover {
+  opacity: 0.6;
+}
+
+.case-name {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.case-num {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.case-status {
+  font-size: 12px;
+  opacity: 0.5;
+  margin-top: 2px;
+}
+
+.nav-copyright-small {
+  font-size: 9px;
+  color: #000;
+  margin-top: 20px;
+  line-height: 1.4;
+  opacity: 0.5;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 200px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Section Base */
+.section {
+  min-height: 100vh;
+  padding: 100px 0;
+  position: relative;
+}
+
+/* Scene 1: Hero */
+.hero {
+  background: linear-gradient(180deg, #CDABFE 0%, #E5D5FE 50%, #ffffff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.tagline {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 22px;
+  color: #000;
+  margin-bottom: 40px;
+  line-height: 1.4;
+}
+
+.hero-title {
+  margin: 40px 0;
+}
+
+.hero-ai {
+  display: block;
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 180px;
+  font-weight: 500;
+  color: #FE7141;
+  line-height: 0.9;
+  letter-spacing: -10px;
+  margin-bottom: 20px;
+}
+
+.hero-main {
+  display: block;
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 120px;
+  font-weight: 500;
+  color: #000;
+  line-height: 114px;
+  letter-spacing: -7.2px;
+}
+
+.hero-year {
+  display: block;
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 120px;
+  font-weight: 500;
+  color: #000;
+  line-height: 114px;
+  letter-spacing: -7.2px;
+  margin-top: 20px;
+}
+
+.byline {
+  font-size: 12px;
+  color: #000;
+  letter-spacing: 2px;
+  margin-top: 60px;
+  font-weight: 400;
+}
+
+.scroll-link {
+  display: inline-block;
+  margin-top: 80px;
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 18px;
+  color: #000;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.scroll-link:hover {
+  opacity: 0.6;
+}
+
+/* Scene 2: Partners */
+.partners {
+  background: #CDABFE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-label {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  max-width: 800px;
+}
+
+.partner-logo {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Scene 3: Inflection Point */
+.inflection {
+  background: #FFF9E6;
+  display: flex;
+  align-items: center;
+}
+
+.inflection-title {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 60px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 60px 0;
+  letter-spacing: -3px;
+}
+
+.stats-row {
+  display: flex;
+  gap: 80px;
+  margin: 80px 0;
+}
+
+.stat {
+  flex: 1;
+}
+
+.stat-number {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 160px;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.stat-plus {
+  font-size: 160px;
+}
+
+.stat-label {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.inflection-text {
+  max-width: 700px;
+  margin: 60px 0;
+}
+
+.inflection-text p {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.inline-link {
+  color: #000;
+  text-decoration: underline;
+  transition: opacity 0.3s;
+}
+
+.inline-link:hover {
+  opacity: 0.6;
+}
+
+/* Scene 4: Quote */
+.quote-section {
+  background: #D1DDD3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote-author {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.author-name {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.author-title {
+  font-size: 12px;
+  letter-spacing: 2px;
+  opacity: 0.7;
+}
+
+.quote-text {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 48px;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.2;
+  max-width: 800px;
+  letter-spacing: -2px;
+}
+
+/* Chapter Sections */
+.chapter {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 150px;
+}
+
+#chapter-tools {
+  background: #D0E8E8;
+}
+
+#chapter-craft {
+  background: #C5E0E8;
+}
+
+#chapter-teams {
+  background: #D0E8E8;
+}
+
+.chapter-number {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 200px;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 40px;
+  opacity: 0.8;
+}
+
+.chapter-title {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 80px;
+  font-weight: 500;
+  margin-bottom: 40px;
+  letter-spacing: -4px;
+}
+
+.chapter-heading {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 60px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 40px;
+  letter-spacing: -3px;
+}
+
+.chapter-intro {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 60px;
+  max-width: 700px;
+}
+
+.chapter-content {
+  margin-bottom: 60px;
+}
+
+.chapter-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+
+.chapter-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.chapter-list li {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 18px;
+  padding: 12px 0;
+  padding-left: 30px;
+  position: relative;
+}
+
+.chapter-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.chapter-cta {
+  display: inline-block;
+  background: #FE7141;
+  color: #000;
+  padding: 16px 32px;
+  text-decoration: none;
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 18px;
+  transition: background 0.3s;
+}
+
+.chapter-cta:hover {
+  background: #ff8555;
+}
+
+/* Case Studies */
+.case-studies {
+  background: linear-gradient(180deg, #FE7141 0%, #F0FF1C 100%);
+  padding: 100px 0;
+}
+
+.section-heading {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 80px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: -4px;
+}
+
+.case-studies-title {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 60px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 80px;
+  letter-spacing: -3px;
+  line-height: 1.1;
+}
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.case-card {
+  background: #fff;
+  padding: 40px;
+  text-decoration: none;
+  color: #000;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.case-card:hover {
+  transform: translateY(-4px);
+}
+
+.case-badge {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  background: #f0f0f0;
+  margin-bottom: 20px;
+}
+
+.case-company {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.case-subtitle {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.case-desc {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  opacity: 0.8;
+}
+
+.case-link {
+  font-size: 14px;
+  letter-spacing: 1px;
+  opacity: 0.6;
+}
+
+/* Coming Soon */
+.coming-soon {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-preview {
+  margin: 60px 0;
+}
+
+.video-placeholder {
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 16/9;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.play-button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+}
+
+.coming-soon-title {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 48px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: -2px;
+}
+
+.coming-soon-desc {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 40px;
+}
+
+.notify-button {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  padding: 16px 32px;
+  text-decoration: none;
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 18px;
+  transition: background 0.3s;
+}
+
+.notify-button:hover {
+  background: #333;
+}
+
+/* Subscribe */
+.subscribe {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subscribe-title {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 60px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: -3px;
+}
+
+.subscribe-desc {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 22px;
+  line-height: 1.4;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.subscribe-input {
+  flex: 1;
+  padding: 16px 20px;
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 18px;
+  border: none;
+  background: #FE7141;
+  color: #000;
+}
+
+.subscribe-input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.subscribe-button {
+  padding: 16px 32px;
+  background: #000;
+  color: #fff;
+  border: none;
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.subscribe-button:hover {
+  background: #333;
+}
+
+.subscribe-disclaimer {
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.7;
+}
+
+.subscribe-disclaimer a {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* Methodology & Footer */
+.methodology {
+  background: #fff;
+  padding: 100px 0 40px;
+}
+
+.methodology-intro {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.methodology-stats {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-bottom: 100px;
+}
+
+.method-stat {
+  text-align: center;
+}
+
+.method-number {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 120px;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.method-label {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.report-partners {
+  margin: 100px 0;
+  text-align: center;
+}
+
+.partners-heading {
+  font-size: 14px;
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+}
+
+.partners-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.partner-link {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 20px;
+  color: #000;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.partner-link:hover {
+  opacity: 0.6;
+}
+
+.footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 60px;
+  margin-top: 60px;
+}
+
+.footer-section {
+  margin-bottom: 40px;
+}
+
+.footer-heading {
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.footer-link {
+  display: block;
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 18px;
+  color: #000;
+  text-decoration: none;
+  margin-bottom: 12px;
+  transition: opacity 0.3s;
+}
+
+.footer-link:hover {
+  opacity: 0.6;
+}
+
+.footer-copyright {
+  font-size: 14px;
+  margin: 40px 0;
+  opacity: 0.6;
+}
+
+.footer-logos {
+  display: flex;
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.footer-logo {
+  font-family: 'Beausite Classic Medium', serif;
+  font-size: 18px;
+  color: #000;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.footer-logo:hover {
+  opacity: 0.6;
+}
+
+.footer-credit {
+  display: inline-block;
+  font-size: 14px;
+  color: #000;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: opacity 0.3s;
+}
+
+.footer-credit:hover {
+  opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 160px;
+    padding: 30px 15px;
+  }
+
+  .main-content {
+    margin-left: 160px;
+  }
+
+  .hero-ai {
+    font-size: 140px;
+  }
+
+  .hero-main,
+  .hero-year {
+    font-size: 90px;
+  }
+
+  .stat-number {
+    font-size: 120px;
+  }
+
+  .stat-plus {
+    font-size: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .hero-ai {
+    font-size: 100px;
+  }
+
+  .hero-main,
+  .hero-year {
+    font-size: 60px;
+    letter-spacing: -4px;
+  }
+
+  .inflection-title {
+    font-size: 40px;
+  }
+
+  .stats-row {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .stat-number {
+    font-size: 100px;
+  }
+
+  .stat-plus {
+    font-size: 100px;
+  }
+
+  .quote-text {
+    font-size: 32px;
+  }
+
+  .chapter-number {
+    font-size: 120px;
+  }
+
+  .chapter-title {
+    font-size: 60px;
+  }
+
+  .chapter-heading {
+    font-size: 40px;
+  }
+
+  .section-heading {
+    font-size: 50px;
+  }
+
+  .case-studies-title {
+    font-size: 40px;
+  }
+
+  .cases-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .methodology-stats {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .method-number {
+    font-size: 80px;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+  }
+}

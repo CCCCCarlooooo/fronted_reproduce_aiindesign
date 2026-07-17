@@ -1,0 +1,85 @@
+{
+  "reference_dir": "gpt56-high-2026-07-16/evidence/original",
+  "candidate_dir": "gpt56-high-2026-07-16/evidence/replica",
+  "mean_pixel_similarity": 87.16,
+  "scenes": [
+    {
+      "scene_index": 0,
+      "reference": "scroll-00-00000.png",
+      "candidate": "scroll-00-00000.png",
+      "pixel_similarity": 92.36
+    },
+    {
+      "scene_index": 1,
+      "reference": "scroll-01-00900.png",
+      "candidate": "scroll-01-00900.png",
+      "pixel_similarity": 89.85
+    },
+    {
+      "scene_index": 2,
+      "reference": "scroll-02-01800.png",
+      "candidate": "scroll-02-01800.png",
+      "pixel_similarity": 93.25
+    },
+    {
+      "scene_index": 3,
+      "reference": "scroll-03-02700.png",
+      "candidate": "scroll-03-02700.png",
+      "pixel_similarity": 92.19
+    },
+    {
+      "scene_index": 4,
+      "reference": "scroll-04-03600.png",
+      "candidate": "scroll-04-03600.png",
+      "pixel_similarity": 92.63
+    },
+    {
+      "scene_index": 5,
+      "reference": "scroll-05-04500.png",
+      "candidate": "scroll-05-04500.png",
+      "pixel_similarity": 83.76
+    },
+    {
+      "scene_index": 6,
+      "reference": "scroll-06-05400.png",
+      "candidate": "scroll-06-05400.png",
+      "pixel_similarity": 95.86
+    },
+    {
+      "scene_index": 7,
+      "reference": "scroll-07-06300.png",
+      "candidate": "scroll-07-06300.png",
+      "pixel_similarity": 83.05
+    },
+    {
+      "scene_index": 8,
+      "reference": "scroll-08-07200.png",
+      "candidate": "scroll-08-07200.png",
+      "pixel_similarity": 78.01
+    },
+    {
+      "scene_index": 9,
+      "reference": "scroll-09-08100.png",
+      "candidate": "scroll-09-08100.png",
+      "pixel_similarity": 79.47
+    },
+    {
+      "scene_index": 10,
+      "reference": "scroll-10-09000.png",
+      "candidate": "scroll-10-09000.png",
+      "pixel_similarity": 91.82
+    },
+    {
+      "scene_index": 11,
+      "reference": "scroll-11-09900.png",
+      "candidate": "scroll-11-09900.png",
+      "pixel_similarity": 81.53
+    },
+    {
+      "scene_index": 12,
+      "reference": "scroll-12-10309.png",
+      "candidate": "scroll-12-10310.png",
+      "pixel_similarity": 79.35
+    }
+  ]
+}

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI in Design Report 2026</title>
+  <link rel="icon" href="data:," />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader" aria-hidden="true">
+    <div class="loader-logo">
+      <span class="loader-aiid">AiiD<sup>™</sup></span><span class="loader-26">26</span>
+    </div>
+  </div>
+
+  <!-- Mouse particle trail canvas -->
+  <canvas id="fx-canvas" aria-hidden="true"></canvas>
+
+  <!-- Header -->
+  <header id="site-header">
+    <a href="https://example.com/" class="logo-block" aria-label="AI in Design 26">
+      <img class="logo-image" src="data:image/svg+xml,%3Csvg%20display=%22block%22%20role=%22presentation%22%20viewBox=%220%200%20142%2036%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg%20d=%22M%20114.9%2011.85%20C%20114.9%2016.102%20112.849%2019.327%20107.716%2023.482%20C%20106.005%2024.851%20104.392%2026.171%20103.171%2027.148%20C%20102.438%2027.734%20101.755%2028.272%20101.118%2028.712%20L%20115.193%2028.712%20L%20115.193%2035.163%20L%2091%2035.163%20L%2091%2029.396%20L%20103.805%2018.399%20C%20106.541%2016.053%20107.617%2014.294%20107.617%2012.339%20C%20107.617%209.603%20105.613%207.745%20103.023%207.745%20C%20100.091%207.745%2098.234%2010.091%2098.186%2013.463%20L%2091.099%2013.463%20C%2091.099%205.887%2095.79%201%20103.023%201%20C%20109.865%201%20114.9%205.497%20114.9%2011.85%20Z%20M%20127.756%2035.711%20C%20120.522%2035.711%20115%2030.482%20115%2023.444%20C%20115%2020.365%20116.124%2017.042%20118.373%2013.571%20L%20126.145%201.5%20L%20134.453%201.5%20L%20126.927%2012.4%20C%20127.708%2012.057%20128.638%2011.96%20129.37%2011.96%20C%20135.822%2011.96%20140.513%2017.093%20140.513%2023.349%20C%20140.513%2030.387%20134.991%2035.715%20127.758%2035.715%20Z%20M%20127.756%2018.019%20C%20124.578%2018.019%20122.087%2020.462%20122.087%2023.541%20C%20122.087%2026.62%20124.58%2029.162%20127.708%2029.162%20C%20130.836%2029.162%20133.426%2026.669%20133.426%2023.591%20C%20133.426%2020.512%20130.884%2018.019%20127.758%2018.019%20Z%20M%2020.282%201%20L%2034.015%2035.213%20L%2026.343%2035.213%20L%2023.46%2027.833%20L%2010.409%2027.833%20L%207.526%2035.213%20L%200%2035.213%20L%2013.783%201%20Z%20M%2012.657%2021.527%20L%2021.26%2021.527%20L%2016.909%2010.335%20Z%20M%2038.155%208.31%20C%2035.809%208.31%2034%206.355%2034%204.155%20C%2034%201.955%2035.809%200%2038.155%200%20C%2040.501%200%2042.31%201.955%2042.31%204.155%20C%2042.31%206.355%2040.501%208.31%2038.155%208.31%20Z%20M%2034.586%2035.289%20L%2034.586%2011.145%20L%2041.722%2011.145%20L%2041.722%2035.289%20Z%20M%2048.655%208.31%20C%2046.308%208.31%2044.5%206.355%2044.5%204.155%20C%2044.5%201.955%2046.308%200%2048.655%200%20C%2051.001%200%2052.81%201.955%2052.81%204.155%20C%2052.81%206.355%2051.001%208.31%2048.655%208.31%20Z%20M%2045.087%2035.289%20L%2045.087%2011.145%20L%2052.224%2011.145%20L%2052.224%2035.289%20Z%20M%2066.584%2035.213%20L%2055%2035.213%20L%2055%201%20L%2066.584%201%20C%2076.164%201%2083.984%208.477%2083.984%2018.107%20C%2083.984%2027.736%2076.164%2035.213%2066.584%2035.213%20Z%20M%2066.388%207.893%20L%2062.332%207.893%20L%2062.332%2028.323%20L%2066.388%2028.323%20C%2072.057%2028.323%2076.457%2023.779%2076.457%2018.108%20C%2076.457%2012.438%2072.059%207.893%2066.388%207.893%20Z%20M%2081.05%201.722%20L%2080.38%201.722%20L%2080.38%203.895%20L%2079.671%203.895%20L%2079.671%201.722%20L%2079%201.722%20L%2079%201%20L%2081.05%201%20Z%20M%2082.5%202.745%20L%2083.256%201%20L%2083.985%201%20L%2083.985%203.895%20L%2083.29%203.895%20L%2083.29%202.598%20L%2082.72%203.895%20L%2082.261%203.895%20L%2081.695%202.604%20L%2081.695%203.895%20L%2081%203.895%20L%2081%201%20L%2081.743%201%20Z%22%20fill=%22transparent%22%20height=%2235.71467px%22%20id=%22bUIbGinxk%22%20width=%22140.51299999999998px%22%3E%3Cpath%20d=%22M%2023.9%2010.85%20C%2023.9%2015.102%2021.849%2018.327%2016.716%2022.482%20C%2015.005%2023.851%2013.392%2025.171%2012.171%2026.148%20C%2011.438%2026.734%2010.755%2027.272%2010.118%2027.712%20L%2024.193%2027.712%20L%2024.193%2034.163%20L%200%2034.163%20L%200%2028.396%20L%2012.805%2017.399%20C%2015.541%2015.053%2016.617%2013.294%2016.617%2011.339%20C%2016.617%208.603%2014.613%206.745%2012.023%206.745%20C%209.091%206.745%207.234%209.091%207.186%2012.463%20L%200.099%2012.463%20C%200.099%204.887%204.79%200%2012.023%200%20C%2018.865%200%2023.9%204.497%2023.9%2010.85%20Z%22%20fill=%22rgb%28255,%20255,%20255%29%22%20height=%2234.163490000000024px%22%20id=%22tfqKR_hYy%22%20transform=%22translate%2891%201%29%22%20width=%2224.193200000000047px%22/%3E%3Cpath%20d=%22M%2012.756%2034.211%20C%205.522%2034.211%200%2028.982%200%2021.944%20C%200%2018.865%201.124%2015.542%203.373%2012.071%20L%2011.145%200%20L%2019.453%200%20L%2011.927%2010.9%20C%2012.708%2010.557%2013.638%2010.46%2014.37%2010.46%20C%2020.822%2010.46%2025.513%2015.593%2025.513%2021.849%20C%2025.513%2028.887%2019.991%2034.215%2012.758%2034.215%20Z%20M%2012.756%2016.519%20C%209.578%2016.519%207.087%2018.962%207.087%2022.041%20C%207.087%2025.12%209.58%2027.662%2012.708%2027.662%20C%2015.836%2027.662%2018.426%2025.169%2018.426%2022.091%20C%2018.426%2019.012%2015.884%2016.519%2012.758%2016.519%20Z%22%20fill=%22rgb%28255,%20255,%20255%29%22%20height=%2234.21467px%22%20id=%22IRKzsmQah%22%20transform=%22translate%28115%201.5%29%22%20width=%2225.51299999999999px%22/%3E%3Cpath%20d=%22M%2020.282%200%20L%2034.015%2034.213%20L%2026.343%2034.213%20L%2023.46%2026.833%20L%2010.409%2026.833%20L%207.526%2034.213%20L%200%2034.213%20L%2013.783%200%20Z%20M%2012.657%2020.527%20L%2021.26%2020.527%20L%2016.909%209.335%20Z%22%20fill=%22rgb%28255,%20255,%20255%29%22%20height=%2234.21293px%22%20id=%22i7XmmoJSr%22%20transform=%22translate%280%201%29%22%20width=%2234.0153px%22/%3E%3Cpath%20d=%22M%204.155%208.31%20C%201.809%208.31%200%206.355%200%204.155%20C%200%201.955%201.809%200%204.155%200%20C%206.501%200%208.31%201.955%208.31%204.155%20C%208.31%206.355%206.501%208.31%204.155%208.31%20Z%20M%200.586%2035.289%20L%200.586%2011.145%20L%207.722%2011.145%20L%207.722%2035.289%20Z%22%20fill=%22rgb%28255,%20255,%20255%29%22%20height=%2235.28910032196045px%22%20id=%22kdN6QVZlX%22%20transform=%22translate%2834%200%29%22%20width=%228.309800000000003px%22/%3E%3Cpath%20d=%22M%204.155%208.31%20C%201.808%208.31%200%206.355%200%204.155%20C%200%201.955%201.808%200%204.155%200%20C%206.501%200%208.31%201.955%208.31%204.155%20C%208.31%206.355%206.501%208.31%204.155%208.31%20Z%20M%200.587%2035.289%20L%200.587%2011.145%20L%207.724%2011.145%20L%207.724%2035.289%20Z%22%20fill=%22rgb%28255,%20255,%20255%29%22%20height=%2235.28910032196045px%22%20id=%22C_knFuf3H%22%20transform=%22translate%2844.5%200%29%22%20width=%228.3097px%22/%3E%3Cpath%20d=%22M%2011.584%2034.213%20L%200%2034.213%20L%200%200%20L%2011.584%200%20C%2021.164%200%2028.984%207.477%2028.984%2017.107%20C%2028.984%2026.736%2021.164%2034.213%2011.584%2034.213%20Z%20M%2011.388%206.893%20L%207.332%206.893%20L%207.332%2027.323%20L%2011.388%2027.323%20C%2017.057%2027.323%2021.457%2022.779%2021.457%2017.108%20C%2021.457%2011.438%2017.059%206.893%2011.388%206.893%20Z%22%20fill=%22rgb%28255,%20255,%20255%29%22%20height=%2234.21293px%22%20id=%22PEKM8ZtBk%22%20transform=%22translate%2855%201%29%22%20width=%2228.983600000000003px%22/%3E%3Cpath%20d=%22M%202.05%200.722%20L%201.38%200.722%20L%201.38%202.895%20L%200.671%202.895%20L%200.671%200.722%20L%200%200.722%20L%200%200%20L%202.05%200%20Z%22%20fill=%22rgb%28255,%20255,%20255%29%22%20height=%222.895210000000006px%22%20id=%22pdRAV8HVm%22%20transform=%22translate%2879%201%29%22%20width=%222.050100000000043px%22/%3E%3Cpath%20d=%22M%201.5%201.745%20L%202.256%200%20L%202.985%200%20L%202.985%202.895%20L%202.29%202.895%20L%202.29%201.598%20L%201.72%202.895%20L%201.261%202.895%20L%200.695%201.604%20L%200.695%202.895%20L%200%202.895%20L%200%200%20L%200.743%200%20Z%22%20fill=%22rgb%28255,%20255,%20255%29%22%20height=%222.895210000000006px%22%20id=%22DxJXpvdQX%22%20transform=%22translate%2881%201%29%22%20width=%222.9850999999999885px%22/%3E%3C/g%3E%3C/svg%3E" alt="" />
+    </a>
+    <a href="https://example.com/" id="read-report-pill" class="header-pill">
+      <span>Read the Report</span>
+      <svg class="plus-icon" viewBox="0 0 12 12" width="12" height="12"><path d="M6 0v12M0 6h12" stroke="currentColor" stroke-width="1.4"/></svg>
+    </a>
+    <nav class="header-right">
+      <a href="https://example.com/" class="header-link">About</a>
+      <button id="cases-trigger" class="header-link header-cases" type="button">
+        <span>Case Studies</span>
+        <svg class="plus-icon" viewBox="0 0 12 12" width="12" height="12"><path d="M6 0v12M0 6h12" stroke="currentColor" stroke-width="1.4"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Fullscreen Case Studies menu -->
+  <div id="cases-menu" aria-hidden="true">
+    <div class="menu-top">
+      <span class="menu-title">Case Studies</span>
+      <button id="cases-close" type="button" aria-label="Close menu">
+        <svg viewBox="0 0 16 16" width="16" height="16"><path d="M1 1l14 14M15 1L1 15" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+    <div class="menu-grid">
+      <a class="menu-row" href="https://example.com/">
+        <span class="menu-name">Framer <sup>01</sup></span>
+        <span class="menu-soon">Coming soon</span>
+        <img src="https://framerusercontent.com/images/rd6RC3C2g354mvaTXc22Z8hsrkI.png?scale-down-to=512" alt="" loading="lazy" />
+      </a>
+      <a class="menu-row" href="https://example.com/">
+        <span class="menu-name">Sierra <sup>02</sup></span>
+        <span class="menu-soon">Coming soon</span>
+        <img src="https://framerusercontent.com/images/BjnduoVw73i89zvx0jvqhBI6pY.png?scale-down-to=512" alt="" loading="lazy" />
+      </a>
+      <a class="menu-row" href="https://example.com/">
+        <span class="menu-name">Shopify <sup>03</sup></span>
+        <span class="menu-soon">Coming soon</span>
+        <img src="https://framerusercontent.com/images/sVDqVYB6apEiCQWv3SUiu02DuE.jpg?scale-down-to=512" alt="" loading="lazy" />
+      </a>
+      <a class="menu-row" href="https://example.com/">
+        <span class="menu-name">Notion <sup>04</sup></span>
+        <span class="menu-soon">Coming soon</span>
+        <img src="https://framerusercontent.com/images/vdlaU7hXYvHA03hPLaBqE2TMTIA.jpg?scale-down-to=512" alt="" loading="lazy" />
+      </a>
+      <a class="menu-row" href="https://example.com/">
+        <span class="menu-name">Stripe <sup>05</sup></span>
+        <span class="menu-soon">Coming soon</span>
+        <img src="https://framerusercontent.com/images/9q6atfyxUQWgbbNEpOcKeKHVMo8.png?scale-down-to=512" alt="" loading="lazy" />
+      </a>
+      <a class="menu-row" href="https://example.com/">
+        <span class="menu-name">Linear <sup>06</sup></span>
+        <span class="menu-soon">Coming soon</span>
+        <img src="https://framerusercontent.com/images/aoiJOJb5U9lPHiXQOrywfzn8ftQ.png?scale-down-to=512" alt="" loading="lazy" />
+      </a>
+      <a class="menu-row" href="https://example.com/">
+        <span class="menu-name">Anthropic <sup>07</sup></span>
+        <span class="menu-soon">Coming soon</span>
+        <img src="https://framerusercontent.com/images/qsqwQqO5XlCp5ZWs7hJuiL0Y.png?scale-down-to=512" alt="" loading="lazy" />
+      </a>
+    </div>
+    <div class="menu-bottom">©2026 DESIGNER FUND, FOUNDATION CAPITAL. ALL RIGHTS RESERVED</div>
+  </div>
+
+  <main>
+
+    <!-- Scene 1: Hero -->
+    <section id="hero">
+      <div class="hero-media">
+        <img class="hero-poster" src="https://framerusercontent.com/images/LKdFBU4cZXjWWQJR62rMmwUFg.jpg?width=1920&height=1080" alt="" />
+        <video id="hero-intro" muted autoplay playsinline preload="auto"
+               poster="https://framerusercontent.com/images/LKdFBU4cZXjWWQJR62rMmwUFg.jpg?width=1920&height=1080"
+               src="https://framerusercontent.com/assets/11fQjZ8SBLFtf9GDiGqEbzqKI8.webm"></video>
+        <video id="hero-loop" muted loop playsinline preload="auto"
+               src="https://framerusercontent.com/assets/60TSo4WrKzA27Mp4KCDTmVbhc.webm"></video>
+      </div>
+      <div class="hero-text px-global">
+        <p class="hero-tagline" data-hero-reveal>How designers are evolving their tools, craft, and teams with AI</p>
+        <h1 class="hero-title"><span class="hero-line" data-hero-line>AI in Design</span><br /><span class="hero-line" data-hero-line>Report 2026</span></h1>
+        <div class="hero-bottom">
+          <p class="hero-credit mono-label">BY DESIGNER FUND IN PARTNERSHIP<br />WITH FOUNDATION CAPITAL</p>
+          <a class="hero-scroll" href="https://example.com/">Scroll to read</a>
+          <svg class="hero-arrow" viewBox="0 0 16 18" width="16" height="18"><path d="M8 0v16M1.5 10L8 16.5 14.5 10" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scene 2: Partners -->
+    <section id="partners" class="px-global">
+      <div class="rule" data-reveal></div>
+      <p class="mono-label" data-reveal>OUR PARTNERS</p>
+      <div class="partners-row">
+        <div class="partner" data-reveal>
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none"><rect x="2" y="2" width="20" height="20" rx="3.5" stroke="currentColor" stroke-width="1.8"/><path d="M7.5 17V7.2l8.6 9.8h.4V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span class="partner-word">Notion</span>
+        </div>
+        <div class="partner" data-reveal>
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.4"/><ellipse cx="12" cy="12" rx="10" ry="4.5" stroke="currentColor" stroke-width="1.2"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(60 12 12)" stroke="currentColor" stroke-width="1.2"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(120 12 12)" stroke="currentColor" stroke-width="1.2"/></svg>
+          <span class="partner-word partner-word-spaced">SIERRA</span>
+        </div>
+        <div class="partner" data-reveal>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M4 2h16v7h-8zM4 9h8l8 7H4zM4 16h8v6z"/></svg>
+          <span class="partner-word">Framer</span>
+        </div>
+        <div class="partner" data-reveal>
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M2.6 14.9a10 10 0 0 0 6.5 6.5zM2 12.5 11.5 22A10 10 0 0 0 22 12 10 10 0 0 0 12 2 10 10 0 0 0 2 12.5zm1-4.3L15.8 21a10 10 0 0 1-2.4.9L2.1 10.6a10 10 0 0 1 .9-2.4z"/></svg>
+          <span class="partner-word">Linear</span>
+        </div>
+        <div class="partner" data-reveal>
+          <span class="partner-word partner-anthropic">ANTHROP\C</span>
+        </div>
+        <div class="partner" data-reveal>
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M14.5 3.2c-.4-.3-.9-.2-1.1-.1l-.7.2A3.2 3.2 0 0 0 10 1.5c-.1 0-2.6.3-4 4.2l-2.2.7c-.5.1-.6.5-.6.7L1.5 20.5 15 23V3.3l-.5-.1zM10.7 4l-1.9.6C9.3 3 10 2.4 10.6 2.2c.1.5.1 1.1.1 1.8zM17 5l2.3.7c.2 0 .4.3.4.5L21.5 20 17 21z"/></svg>
+          <span class="partner-word partner-shopify">shopify</span>
+        </div>
+        <div class="partner" data-reveal>
+          <span class="partner-word partner-stripe">stripe</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scene 3: An inflection point -->
+    <section id="inflection" class="px-global">
+      <div class="rule" data-reveal></div>
+      <p class="mono-label" data-reveal>AN INFLECTION POINT</p>
+      <h1 class="inflection-title" data-reveal>In 2025, designers were experimenting with AI. In 2026, they’re rebuilding around it.</h1>
+    </section>
+
+    <!-- Scene 4: Founders photo + stats -->
+    <section id="founders">
+      <div class="founders-sticky">
+        <div class="founders-media">
+          <img src="https://framerusercontent.com/images/ytblsBi2O0C6jtd1PYCTXAczI.jpg?scale-down-to=2048" alt="Report authors reviewing the survey" />
+        </div>
+        <div class="founders-panels">
+          <div class="stat-panel stat-panel-purple" data-panel>
+            <p class="stat-number">900<sup>+</sup></p>
+            <h4>Designers surveyed<br />in 60+ countries.</h4>
+          </div>
+          <div class="stat-panel stat-panel-sage" data-panel>
+            <p class="stat-number">25<sup>+</sup></p>
+            <h4>Interviews with<br />practitioners and leaders</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scene 5: Mission -->
+    <section id="mission" class="px-global">
+      <div class="mission-col">
+        <h3 data-reveal>AI in Design 2026 aims to capture how AI is transforming tech design across designers’ desks and within their teams.</h3>
+        <p data-reveal>We ran our first AI in Design survey in early 2025 because we consistently heard designers and leaders ask, “How are others doing this, and what’s working?” A year later, we’re attempting to get a sense for what’s changed and share firsthand perspectives.</p>
+        <p data-reveal>The answers come from over 900 designers at startups, enterprises, and agencies who work across disciplines like product design, brand design, research, and design engineering. We also conducted over 20 interviews with leaders at companies actively navigating this shift.</p>
+        <p data-reveal>Given how quickly practices are evolving, we’ll continue to release new findings throughout the year, including case studies about design at companies like Anthropic, Sierra, Stripe, Notion, Shopify, Linear, and Framer. <a class="underline-link" href="https://example.com/">Sign up for new releases.</a></p>
+      </div>
+    </section>
+
+    <!-- Scene 6: Quote -->
+    <section id="quote">
+      <div class="quote-left">
+        <span class="quote-mark">“</span>
+        <div class="quote-person">
+          <img src="https://framerusercontent.com/images/ILvJ4Wz4i6yJ8F12oB7DbSiYhI.png?width=176&height=176" alt="Katie Dill" />
+          <p class="quote-name">Katie Dill</p>
+          <p class="quote-role mono-label">HEAD OF DESIGN, STRIPE</p>
+        </div>
+      </div>
+      <div class="quote-right">
+        <h4 data-reveal>AI is sparking a creative renaissance in design. With new instruments, it’s our chance to compose wholly new music.</h4>
+      </div>
+    </section>
+
+    <!-- Scenes 7-9: Chapter slides (sticky stacking) -->
+    <div id="chapters">
+
+      <section class="chapter chapter-tools" data-chapter>
+        <div class="px-global chapter-inner">
+          <div class="rule rule-dark"></div>
+          <div class="chapter-head">
+            <h2 class="chapter-index">01<br />Tools</h2>
+            <div class="chapter-intro">
+              <h1>The great<br />toolstack shakeup</h1>
+              <p>AI usage has surged, but the toolstack is still in flux. Designers are using double the number of off-the-shelf tools than they did in 2025, and they’re building custom software with AI that matches how they like to work. As everyone rushes to keep up with new releases, reliable output quality remains the largest area for improvement.</p>
+            </div>
+          </div>
+          <div class="chapter-grid">
+            <div class="chapter-media">
+              <video src="https://framerusercontent.com/assets/GxhkDLcDBfujafaVJCiFKoxE.webm" muted autoplay loop playsinline preload="metadata"></video>
+            </div>
+            <div class="chapter-list">
+              <p class="mono-label">IN THIS CHAPTER, WE’LL COVER:</p>
+              <ul>
+                <li>The most-used AI design tools</li>
+                <li>The toolstack that's multiplying</li>
+                <li>What makes tools stick (+ why many don’t)</li>
+                <li>Designers as builders of their own tools</li>
+                <li>Tool fatigue and the pressure to keep up</li>
+              </ul>
+              <a class="chapter-cta" href="https://example.com/">
+                <span>Read the Tools Chapter</span>
+                <svg viewBox="0 0 24 16" width="24" height="16"><path d="M0 8h22M15.5 1.5 22 8l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter chapter-craft" data-chapter>
+        <div class="px-global chapter-inner">
+          <div class="rule rule-dark"></div>
+          <div class="chapter-head">
+            <h2 class="chapter-index">02<br />Craft</h2>
+            <div class="chapter-intro">
+              <h1>Craft in the age<br />of infinite output</h1>
+              <p>Everyone is shipping faster. But is speed good for craft? AI has unlocked a new gear for designers: they’re ideating faster, prototyping more, and learning to code. Half of respondents have pushed AI-generated code to production. At the same time, we hear concerns about craft atrophy and the loneliness of designing alongside AI instead of teammates.</p>
+            </div>
+          </div>
+          <div class="chapter-grid">
+            <div class="chapter-media">
+              <video src="https://framerusercontent.com/assets/lL79Fmd1Pvt2WDRdt11xdoPD3Uw.webm" muted autoplay loop playsinline preload="metadata"></video>
+            </div>
+            <div class="chapter-list">
+              <p class="mono-label">IN THIS CHAPTER, WE’LL COVER:</p>
+              <ul>
+                <li>Coding as a core design skill</li>
+                <li>Prototyping as a default output</li>
+                <li>The tension between speed and quality</li>
+                <li>Preserving judgment and taste</li>
+                <li>The trend toward designers as builders</li>
+              </ul>
+              <a class="chapter-cta" href="https://example.com/">
+                <span>Read the Craft Chapter</span>
+                <svg viewBox="0 0 24 16" width="24" height="16"><path d="M0 8h22M15.5 1.5 22 8l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter chapter-teams" data-chapter>
+        <div class="px-global chapter-inner">
+          <div class="rule rule-dark"></div>
+          <div class="chapter-head">
+            <h2 class="chapter-index">03<br />Teams</h2>
+            <div class="chapter-intro">
+              <h1>Redesigning<br />the design org</h1>
+              <p>AI gave designers new powers. Now organizations need to adapt. Roles are blurring as designers take on PM and engineering work, and vice versa. Hiring managers want AI fluency alongside a high bar for craft, vision, and storytelling. But few companies have updated performance reviews, team structures, or hiring practices to match how the work has changed.</p>
+            </div>
+          </div>
+          <div class="chapter-grid">
+            <div class="chapter-media">
+              <video src="https://framerusercontent.com/assets/n4xIX9MPpD5lGFog1WLZ2I2UQyY.webm" muted autoplay loop playsinline preload="metadata"></video>
+            </div>
+            <div class="chapter-list">
+              <p class="mono-label">IN THIS CHAPTER, WE’LL COVER:</p>
+              <ul>
+                <li>How companies support AI adoption</li>
+                <li>Blurring of design, PM, and engineering</li>
+                <li>The messy nature of collaboration</li>
+                <li>Changing expectations and company policy</li>
+                <li>What hiring managers are now looking for</li>
+              </ul>
+              <a class="chapter-cta" href="https://example.com/">
+                <span>Read the Teams Chapter</span>
+                <svg viewBox="0 0 24 16" width="24" height="16"><path d="M0 8h22M15.5 1.5 22 8l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Scene 10: Video case studies carousel -->
+    <section id="case-studies" class="px-global">
+      <div class="rule" data-reveal></div>
+      <h2 class="mono-label" data-reveal>VIDEO CASE STUDIES</h2>
+      <div class="carousel-head">
+        <h2 class="carousel-title" data-reveal>Seven companies. Seven ways<br />of navigating the same shift.</h2>
+        <div class="carousel-arrows">
+          <button id="car-prev" type="button" aria-label="Previous">
+            <svg viewBox="0 0 24 16" width="24" height="16"><path d="M24 8H2M8.5 1.5 2 8l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </button>
+          <button id="car-next" type="button" aria-label="Next">
+            <svg viewBox="0 0 24 16" width="24" height="16"><path d="M0 8h22M15.5 1.5 22 8l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="carousel" class="carousel-track">
+        <a class="case-card" href="https://example.com/">
+          <div class="case-thumb">
+            <img src="https://framerusercontent.com/images/9q6atfyxUQWgbbNEpOcKeKHVMo8.png?scale-down-to=1024" alt="Stripe case study" loading="lazy" />
+            <span class="case-soon">Coming soon</span>
+          </div>
+          <div class="case-accent accent-orange"></div>
+          <div class="case-info">
+            <p class="case-name">Stripe</p>
+            <p class="case-title">Creating the<br />conditions for adoption</p>
+            <p class="case-desc">How do you build a culture that enables AI adoption instead of dictating the playbook?</p>
+          </div>
+          <div class="case-notify"><span>Get notified</span>
+            <svg viewBox="0 0 18 12" width="18" height="12"><path d="M0 6h16M11 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+          </div>
+        </a>
+        <a class="case-card" href="https://example.com/">
+          <div class="case-thumb">
+            <img src="https://framerusercontent.com/images/BjnduoVw73i89zvx0jvqhBI6pY.png?scale-down-to=1024" alt="Sierra case study" loading="lazy" />
+            <span class="case-soon">Coming soon</span>
+          </div>
+          <div class="case-accent accent-lilac"></div>
+          <div class="case-info">
+            <p class="case-name">Sierra</p>
+            <p class="case-title">Scaling craft, keeping the bar</p>
+            <p class="case-desc">How does a small design team supporting 100+ engineers protect craft without lowering the bar?</p>
+          </div>
+          <div class="case-notify"><span>Get notified</span>
+            <svg viewBox="0 0 18 12" width="18" height="12"><path d="M0 6h16M11 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+          </div>
+        </a>
+        <a class="case-card" href="https://example.com/">
+          <div class="case-thumb">
+            <img src="https://framerusercontent.com/images/qsqwQqO5XlCp5ZWs7hJuiL0Y.png?scale-down-to=1024" alt="Anthropic case study" loading="lazy" />
+            <span class="case-soon">Coming soon</span>
+          </div>
+          <div class="case-accent accent-lilac"></div>
+          <div class="case-info">
+            <p class="case-name">Anthropic</p>
+            <p class="case-title">When code is no<br />longer the constraint</p>
+            <p class="case-desc">When AI writes most of the code, how should the design team operate?</p>
+          </div>
+          <div class="case-notify"><span>Get notified</span>
+            <svg viewBox="0 0 18 12" width="18" height="12"><path d="M0 6h16M11 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+          </div>
+        </a>
+        <a class="case-card" href="https://example.com/">
+          <div class="case-thumb">
+            <img src="https://framerusercontent.com/images/sVDqVYB6apEiCQWv3SUiu02DuE.jpg?scale-down-to=1024" alt="Shopify case study" loading="lazy" />
+            <span class="case-soon">Coming soon</span>
+          </div>
+          <div class="case-accent accent-lilac"></div>
+          <div class="case-info">
+            <p class="case-name">Shopify</p>
+            <p class="case-title">Growing as a designer</p>
+            <p class="case-desc">In a moment when the tools, skills, and expectations are all shifting at once, how can designers grow and thrive?</p>
+          </div>
+          <div class="case-notify"><span>Get notified</span>
+            <svg viewBox="0 0 18 12" width="18" height="12"><path d="M0 6h16M11 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+          </div>
+        </a>
+        <a class="case-card" href="https://example.com/">
+          <div class="case-thumb">
+            <img src="https://framerusercontent.com/images/vdlaU7hXYvHA03hPLaBqE2TMTIA.jpg?scale-down-to=1024" alt="Notion case study" loading="lazy" />
+            <span class="case-soon">Coming soon</span>
+          </div>
+          <div class="case-accent accent-lilac"></div>
+          <div class="case-info">
+            <p class="case-name">Notion</p>
+            <p class="case-title">Working alongside agents</p>
+            <p class="case-desc">What does it feel like to design alongside agents when the tools and workflows change but the philosophy doesn't?</p>
+          </div>
+          <div class="case-notify"><span>Get notified</span>
+            <svg viewBox="0 0 18 12" width="18" height="12"><path d="M0 6h16M11 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+          </div>
+        </a>
+        <a class="case-card" href="https://example.com/">
+          <div class="case-thumb">
+            <img src="https://framerusercontent.com/images/aoiJOJb5U9lPHiXQOrywfzn8ftQ.png?scale-down-to=1024" alt="Linear case study" loading="lazy" />
+            <span class="case-soon">Coming soon</span>
+          </div>
+          <div class="case-accent accent-lilac"></div>
+          <div class="case-info">
+            <p class="case-name">Linear</p>
+            <p class="case-title">Protecting the space to explore</p>
+            <p class="case-desc">As AI accelerates everything, how do you defend the slower, more deliberate parts of the design process?</p>
+          </div>
+          <div class="case-notify"><span>Get notified</span>
+            <svg viewBox="0 0 18 12" width="18" height="12"><path d="M0 6h16M11 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+          </div>
+        </a>
+        <a class="case-card" href="https://example.com/">
+          <div class="case-thumb">
+            <img src="https://framerusercontent.com/images/rd6RC3C2g354mvaTXc22Z8hsrkI.png?scale-down-to=1024" alt="Framer case study" loading="lazy" />
+            <span class="case-soon">Coming soon</span>
+          </div>
+          <div class="case-accent accent-lilac"></div>
+          <div class="case-info">
+            <p class="case-name">Framer</p>
+            <p class="case-title">Designing the design tools</p>
+            <p class="case-desc">When most AI tools optimize for generation, what does it look like to build one that protects design control instead?</p>
+          </div>
+          <div class="case-notify"><span>Get notified</span>
+            <svg viewBox="0 0 18 12" width="18" height="12"><path d="M0 6h16M11 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Scene 11: Coming soon video -->
+    <section id="coming-soon" class="px-global">
+      <div class="rule" data-reveal></div>
+      <p class="mono-label" data-reveal>COMING SOON</p>
+      <div class="soon-col">
+        <a class="soon-video" href="https://example.com/" data-reveal>
+          <video src="https://framerusercontent.com/assets/4RQvaMC0xNnbs7f7MQ6hG63i2pM.webm"
+                 poster="https://framerusercontent.com/images/ytblsBi2O0C6jtd1PYCTXAczI.jpg?scale-down-to=2048"
+                 muted autoplay loop playsinline preload="metadata"></video>
+          <span class="soon-play" aria-label="Play">
+            <svg viewBox="0 0 20 22" width="20" height="22"><path d="M1 1.5v19L19 11z" fill="currentColor"/></svg>
+          </span>
+        </a>
+        <h3 data-reveal>Inside AI-native design teams</h3>
+        <p data-reveal>Seven video case studies with the design teams at Anthropic, Framer, Linear, Notion, Shopify, Sierra, and Stripe. Go inside the workflows they've rebuilt, the tradeoffs they're navigating, and how they’re operating differently as a team.</p>
+        <a class="notify-line" href="https://example.com/" data-reveal>
+          <span>Get notified when they’re released</span>
+          <svg viewBox="0 0 18 12" width="18" height="12"><path d="M0 6h16M11 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Scenes 12-14: Footer -->
+    <footer id="footer">
+      <div id="scroll-to-subscribe" class="subscribe px-global">
+        <h2 data-reveal>Get new case studies<br />&amp; report markdown</h2>
+        <h3 data-reveal>Download the markdown version of the report, ready to drop into any tool.<br />Get notified as new case studies go live.</h3>
+        <form class="subscribe-form" action="https://example.com/" method="get" data-reveal>
+          <input type="email" name="email" placeholder="Your email" required />
+          <button type="submit">Submit</button>
+        </form>
+        <p class="subscribe-legal" data-reveal>By subscribing, you agree to receive communications from <a href="https://example.com/">Designer Fund</a> and <a href="https://example.com/">Foundation Capital</a> in<br />accordance with their privacy policies.</p>
+      </div>
+
+      <div class="methodology px-global">
+        <div class="method-cell method-label">
+          <p class="mono-label">METHODOLOGY</p>
+          <h3>This report<br />draws from</h3>
+        </div>
+        <div class="method-cell">
+          <p class="method-number" data-reveal>906</p>
+          <h6>Survey responses</h6>
+        </div>
+        <div class="method-cell">
+          <p class="method-number" data-reveal>25<sup>+</sup></p>
+          <h6>Interviews</h6>
+        </div>
+        <div class="method-cell">
+          <p class="method-number" data-reveal>50<sup>+</sup></p>
+          <h6>Public sources</h6>
+        </div>
+      </div>
+
+      <div class="wordmark px-global">
+        <p id="giant-wordmark">Ai in Design<sup>™</sup></p>
+      </div>
+
+      <div class="footer-links px-global">
+        <div class="footer-cols">
+          <div class="footer-group">
+            <p class="mono-label">REPORT&nbsp;&nbsp;PARTNERS</p>
+            <div class="footer-two-col">
+              <a href="https://example.com/">Anthropic</a>
+              <a href="https://example.com/">Framer</a>
+              <a href="https://example.com/">Stripe</a>
+              <a href="https://example.com/">Sierra</a>
+              <a href="https://example.com/">Notion</a>
+              <a href="https://example.com/">Shopify</a>
+              <a href="https://example.com/">Linear</a>
+            </div>
+          </div>
+          <div class="footer-group">
+            <p class="mono-label">REPORT</p>
+            <div class="footer-one-col">
+              <a href="https://example.com/">Read the Report</a>
+              <a href="https://example.com/">About</a>
+              <a href="https://example.com/">Case Studies</a>
+            </div>
+          </div>
+        </div>
+        <p id="giant-year">2026</p>
+      </div>
+
+      <div class="footer-bottom px-global">
+        <p>©2026 Designer Fund, Foundation Capital. All rights reserved</p>
+        <div class="footer-marks">
+          <a href="https://example.com/" class="footer-mark">
+            <svg viewBox="0 0 14 14" width="13" height="13" fill="none"><path d="M7 1v12M1 7h12M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="1.2"/></svg>
+            <span>Designer Fund</span>
+          </a>
+          <span class="footer-dot">•</span>
+          <a href="https://example.com/" class="footer-mark">
+            <svg viewBox="0 0 14 14" width="13" height="13" fill="none"><circle cx="7" cy="7" r="5.6" stroke="currentColor" stroke-width="1.2"/><path d="M4 7h6M7 4v6" stroke="currentColor" stroke-width="1.2"/></svg>
+            <span>foundation capital</span>
+          </a>
+        </div>
+        <a href="https://example.com/">Made in Framer by ++hellohello</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
