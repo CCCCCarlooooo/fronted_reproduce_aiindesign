@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI in Design Report 2026</title>
+  <meta name="description" content="How designers are evolving their tools, craft, and teams with AI. By Designer Fund in partnership with Foundation Capital.">
+
+  <!-- Google Fonts: Geist Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="loading">
+
+  <!-- Grain Overlay -->
+  <div class="grain-overlay"></div>
+
+  <!-- Cursor Glow -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Particle Canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-counter" id="preloaderCount">0</div>
+    <div class="preloader-bar">
+      <div class="preloader-bar-fill" id="preloaderBar"></div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="mainNav">
+    <a href="https://example.com/" class="nav-logo">
+      <svg viewBox="0 0 142 36" xmlns="http://www.w3.org/2000/svg" style="height:28px;width:auto;">
+        <g fill="#000">
+          <path d="M23.9 10.85C23.9 15.1 21.85 18.33 16.72 22.48C15 23.85 13.39 25.17 12.17 26.15C11.44 26.73 10.76 27.27 10.12 27.71H24.19V34.16H0V28.4L12.81 17.4C15.54 15.05 16.62 13.29 16.62 11.34C16.62 8.6 14.61 6.75 12.02 6.75C9.09 6.75 7.23 9.09 7.19 12.46H0.1C0.1 4.89 4.79 0 12.02 0C18.87 0 23.9 4.5 23.9 10.85Z" transform="translate(91 1)"/>
+          <path d="M12.76 34.21C5.52 34.21 0 28.98 0 21.94C0 18.87 1.12 15.54 3.37 12.07L11.15 0H19.45L11.93 10.9C12.71 10.56 13.64 10.46 14.37 10.46C20.82 10.46 25.51 15.59 25.51 21.85C25.51 28.89 19.99 34.22 12.76 34.22ZM12.76 16.52C9.58 16.52 7.09 18.96 7.09 22.04C7.09 25.12 9.58 27.66 12.71 27.66C15.84 27.66 18.43 25.17 18.43 22.09C18.43 19.01 15.88 16.52 12.76 16.52Z" transform="translate(115 1.5)"/>
+          <path d="M20.28 0L34.02 34.21H26.34L23.46 26.83H10.41L7.53 34.21H0L13.78 0ZM12.66 20.53H21.26L16.91 9.34L12.66 20.53Z" transform="translate(0 1)"/>
+          <path d="M4.16 8.31C1.81 8.31 0 6.36 0 4.16C0 1.96 1.81 0 4.16 0C6.5 0 8.31 1.96 8.31 4.16C8.31 6.36 6.5 8.31 4.16 8.31ZM0.59 35.29V11.15H7.72V35.29H0.59Z" transform="translate(34 0)"/>
+          <path d="M4.16 8.31C1.81 8.31 0 6.36 0 4.16C0 1.96 1.81 0 4.16 0C6.5 0 8.31 1.96 8.31 4.16C8.31 6.36 6.5 8.31 4.16 8.31ZM0.59 35.29V11.15H7.72V35.29H0.59Z" transform="translate(44.5 0)"/>
+          <path d="M11.58 34.21H0V0H11.58C21.16 0 28.98 7.48 28.98 17.11C28.98 26.74 21.16 34.21 11.58 34.21ZM11.39 6.89H7.33V27.32H11.39C17.06 27.32 21.46 22.78 21.46 17.11C21.46 11.44 17.06 6.89 11.39 6.89Z" transform="translate(55 1)"/>
+        </g>
+      </svg>
+    </a>
+    <button class="nav-menu-btn" id="menuBtn" onclick="toggleMenu()">
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <span style="font-family:var(--font-mono);font-size:11px;">Menu</span>
+    </button>
+  </nav>
+
+  <!-- Menu Overlay -->
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="menu-overlay-content">
+      <div class="menu-col">
+        <h3>Report Chapters</h3>
+        <a href="https://example.com/" class="menu-link">
+          <span>Tools</span>
+          <span class="num">01</span>
+        </a>
+        <a href="https://example.com/" class="menu-link">
+          <span>Craft</span>
+          <span class="num">02</span>
+        </a>
+        <a href="https://example.com/" class="menu-link">
+          <span>Teams</span>
+          <span class="num">03</span>
+        </a>
+      </div>
+      <div class="menu-col">
+        <h3>Case Studies</h3>
+        <a href="https://example.com/" class="menu-link">
+          <span>Framer</span>
+          <span class="num">01</span>
+        </a>
+        <a href="https://example.com/" class="menu-link">
+          <span>Sierra</span>
+          <span class="num">02</span>
+        </a>
+        <a href="https://example.com/" class="menu-link">
+          <span>Shopify</span>
+          <span class="num">03</span>
+        </a>
+        <a href="https://example.com/" class="menu-link">
+          <span>Notion</span>
+          <span class="num">04</span>
+        </a>
+        <a href="https://example.com/" class="menu-link">
+          <span>Stripe</span>
+          <span class="num">05</span>
+        </a>
+        <a href="https://example.com/" class="menu-link">
+          <span>Linear</span>
+          <span class="num">06</span>
+        </a>
+        <a href="https://example.com/" class="menu-link">
+          <span>Anthropic</span>
+          <span class="num">07</span>
+        </a>
+      </div>
+      <div class="menu-col">
+        <h3>More</h3>
+        <a href="https://example.com/" class="menu-link">
+          <span>About</span>
+        </a>
+      </div>
+    </div>
+    <div class="menu-footer">
+      &copy;2026 Designer Fund, Foundation Capital. All rights reserved
+    </div>
+  </div>
+
+  <!-- ===== SCENE 1: HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <p class="hero-subtitle reveal">How designers are evolving their tools, craft, and teams with AI</p>
+        <h1 class="hero-title reveal">AI in Design<br>Report 2026</h1>
+        <p class="hero-credit reveal">By Designer Fund in partnership with Foundation Capital</p>
+        <a href="https://example.com/" class="hero-scroll-indicator reveal" id="partners">
+          <span>Scroll to read</span>
+          <span class="scroll-arrow"></span>
+        </a>
+      </div>
+      <div class="hero-images" id="heroImages">
+        <img src="https://framerusercontent.com/images/9q6atfyxUQWgbbNEpOcKeKHVMo8.png?width=3840&height=2160" alt="" loading="eager">
+        <img src="https://framerusercontent.com/images/BjnduoVw73i89zvx0jvqhBI6pY.png?width=3840&height=2160" alt="" loading="eager">
+        <img src="https://framerusercontent.com/images/qsqwQqO5XlCp5ZWs7hJuiL0Y.png?width=3840&height=2160" alt="" loading="eager">
+        <img src="https://framerusercontent.com/images/sVDqVYB6apEiCQWv3SUiu02DuE.jpg?width=3840&height=2160" alt="" loading="eager">
+        <img src="https://framerusercontent.com/images/vdlaU7hXYvHA03hPLaBqE2TMTIA.jpg?width=3840&height=2160" alt="" loading="eager">
+        <img src="https://framerusercontent.com/images/aoiJOJb5U9lPHiXQOrywfzn8ftQ.png?width=3840&height=2160" alt="" loading="eager">
+        <img src="https://framerusercontent.com/images/rd6RC3C2g354mvaTXc22Z8hsrkI.png?scale-down-to=1024&width=2640&height=1478" alt="" loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCENE 2: PARTNERS ===== -->
+  <section class="partners" id="partners-section">
+    <p class="partners-label reveal">Our partners</p>
+    <div class="partners-grid">
+      <a href="https://example.com/" class="partner-logo">Anthropic</a>
+      <a href="https://example.com/" class="partner-logo">Framer</a>
+      <a href="https://example.com/" class="partner-logo">Stripe</a>
+      <a href="https://example.com/" class="partner-logo">Sierra</a>
+      <a href="https://example.com/" class="partner-logo">Notion</a>
+      <a href="https://example.com/" class="partner-logo">Shopify</a>
+      <a href="https://example.com/" class="partner-logo">Linear</a>
+    </div>
+  </section>
+
+  <!-- ===== SCENE 3: INFLECTION POINT ===== -->
+  <section class="inflection" id="inflection">
+    <p class="inflection-label reveal">An Inflection Point</p>
+    <h1 class="inflection-heading reveal">In 2025, designers were experimenting with AI. In 2026, they're rebuilding around it.</h1>
+  </section>
+
+  <!-- ===== SCENE 4: STATS ===== -->
+  <section class="stats" id="stats">
+    <div class="stat-card">
+      <div class="stat-number">
+        <span class="num counter" data-target="900">0</span>
+        <span class="plus">+</span>
+      </div>
+      <h4 class="stat-desc">Designers surveyed in 60+ countries.</h4>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">
+        <span class="num counter" data-target="20">0</span>
+        <span class="plus">+</span>
+      </div>
+      <h4 class="stat-desc">Interviews with practitioners and leaders</h4>
+    </div>
+  </section>
+
+  <!-- ===== SCENE 5: ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="about-text">
+      <p>AI in Design 2026 aims to capture how AI is transforming tech design across designers' desks and within their teams.</p>
+      <p>We ran our first AI in Design survey in early 2025 because we consistently heard designers and leaders ask, "How are others doing this, and what's working?" A year later, we're attempting to get a sense for what's changed and share firsthand perspectives.</p>
+      <p>The answers come from over 900 designers at startups, enterprises, and agencies who work across disciplines like product design, brand design, research, and design engineering. We also conducted over 20 interviews with leaders at companies actively navigating this shift.</p>
+      <p>Given how quickly practices are evolving, we'll continue to release new findings throughout the year, including case studies about design at companies like Anthropic, Sierra, Stripe, Notion, Shopify, Linear, and Framer. <a href="https://example.com/">Sign up for new releases.</a></p>
+    </div>
+    <div class="quote-section" style="padding-top:0;padding-bottom:0;">
+      <div class="quote-card">
+        <p class="quote-author">Katie Dill</p>
+        <p class="quote-role">Head of Design, STRIPE</p>
+        <h4 class="quote-text">AI is sparking a creative renaissance in design. With new instruments, it's our chance to compose wholly new music.</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCENE 6: CHAPTERS ===== -->
+  <section class="chapters" id="chapters">
+    <!-- Chapter 01: Tools -->
+    <div class="chapter-card">
+      <div class="chapter-left">
+        <div class="chapter-num-title">
+          <span class="chapter-num">01</span>
+          <span class="chapter-title-label">Tools</span>
+        </div>
+        <h1 class="chapter-heading">The great toolstack shakeup</h1>
+        <p class="chapter-desc">AI usage has surged, but the toolstack is still in flux. Designers are using double the number of off-the-shelf tools than they did in 2025, and they're building custom software with AI that matches how they like to work. As everyone rushes to keep up with new releases, reliable output quality remains the largest area for improvement.</p>
+      </div>
+      <div class="chapter-right">
+        <p class="chapter-topics-label">In this chapter, we'll cover:</p>
+        <div class="chapter-topic">The most-used AI design tools</div>
+        <div class="chapter-topic">The toolstack that's multiplying</div>
+        <div class="chapter-topic">What makes tools stick (+ why many don't)</div>
+        <div class="chapter-topic">Designers as builders of their own tools</div>
+        <div class="chapter-topic">Tool fatigue and the pressure to keep up</div>
+        <a href="https://example.com/" class="chapter-link">
+          Read the Tools Chapter
+          <span class="arrow">→</span>
+        </a>
+        <div class="chapter-video">
+          <video autoplay muted loop playsinline src="https://framerusercontent.com/assets/GxhkDLcDBfujafaVJCiFKoxE.webm"></video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 02: Craft -->
+    <div class="chapter-card">
+      <div class="chapter-left">
+        <div class="chapter-num-title">
+          <span class="chapter-num">02</span>
+          <span class="chapter-title-label">Craft</span>
+        </div>
+        <h1 class="chapter-heading">Craft in the age of infinite output</h1>
+        <p class="chapter-desc">Everyone is shipping faster. But is speed good for craft? AI has unlocked a new gear for designers: they're ideating faster, prototyping more, and learning to code. Half of respondents have pushed AI-generated code to production. At the same time, we hear concerns about craft atrophy and the loneliness of designing alongside AI instead of teammates.</p>
+      </div>
+      <div class="chapter-right">
+        <p class="chapter-topics-label">In this chapter, we'll cover:</p>
+        <div class="chapter-topic">Coding as a core design skill</div>
+        <div class="chapter-topic">Prototyping as a default output</div>
+        <div class="chapter-topic">The tension between speed and quality</div>
+        <div class="chapter-topic">Preserving judgment and taste</div>
+        <div class="chapter-topic">The trend toward designers as builders</div>
+        <a href="https://example.com/" class="chapter-link">
+          Read the Craft Chapter
+          <span class="arrow">→</span>
+        </a>
+        <div class="chapter-video">
+          <video autoplay muted loop playsinline src="https://framerusercontent.com/assets/lL79Fmd1Pvt2WDRdt11xdoPD3Uw.webm"></video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 03: Teams -->
+    <div class="chapter-card">
+      <div class="chapter-left">
+        <div class="chapter-num-title">
+          <span class="chapter-num">03</span>
+          <span class="chapter-title-label">Teams</span>
+        </div>
+        <h1 class="chapter-heading">Redesigning the design org</h1>
+        <p class="chapter-desc">Companies have stepped up their support for AI adoption, but most of the learning is still happening between peers. The organizations seeing the most momentum are creating the conditions for tinkering. They're also rethinking collaboration rituals for a world where anyone can spin up a prototype, but the AI tools they're using haven't yet been designed for multiplayer work.</p>
+      </div>
+      <div class="chapter-right">
+        <p class="chapter-topics-label">In this chapter, we'll cover:</p>
+        <div class="chapter-topic">How companies support AI adoption</div>
+        <div class="chapter-topic">Blurring of design, PM, and engineering</div>
+        <div class="chapter-topic">The messy nature of collaboration</div>
+        <div class="chapter-topic">Changing expectations and company policy</div>
+        <div class="chapter-topic">What hiring managers are now looking for</div>
+        <a href="https://example.com/" class="chapter-link">
+          Read the Teams Chapter
+          <span class="arrow">→</span>
+        </a>
+        <div class="chapter-video">
+          <video autoplay muted loop playsinline src="https://framerusercontent.com/assets/n4xIX9MPpD5lGFog1WLZ2I2UQyY.webm"></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCENE 7: CASE STUDIES ===== -->
+  <section class="case-studies" id="case-studies">
+    <div class="case-studies-header">
+      <p class="case-studies-label reveal">Video Case Studies</p>
+      <h2 class="case-studies-heading reveal">Seven companies. Seven ways of navigating the same shift.</h2>
+    </div>
+    <div class="case-studies-grid">
+      <a href="https://example.com/" class="case-card">
+        <div class="case-card-badge">Coming soon</div>
+        <div class="case-card-header">
+          <span class="case-card-company">Stripe</span>
+          <span class="case-card-tagline">Creating the conditions for adoption</span>
+        </div>
+        <p class="case-card-desc">How do you build a culture that enables AI adoption instead of dictating the playbook?</p>
+        <span class="case-card-cta">Get notified →</span>
+      </a>
+      <a href="https://example.com/" class="case-card">
+        <div class="case-card-badge">Coming soon</div>
+        <div class="case-card-header">
+          <span class="case-card-company">Sierra</span>
+          <span class="case-card-tagline">Scaling craft, keeping the bar</span>
+        </div>
+        <p class="case-card-desc">How does a small design team supporting 100+ engineers protect craft without lowering the bar?</p>
+        <span class="case-card-cta">Get notified →</span>
+      </a>
+      <a href="https://example.com/" class="case-card">
+        <div class="case-card-badge">Coming soon</div>
+        <div class="case-card-header">
+          <span class="case-card-company">Anthropic</span>
+          <span class="case-card-tagline">When code is no longer the constraint</span>
+        </div>
+        <p class="case-card-desc">When AI writes most of the code, how should the design team operate?</p>
+        <span class="case-card-cta">Get notified →</span>
+      </a>
+      <a href="https://example.com/" class="case-card">
+        <div class="case-card-badge">Coming soon</div>
+        <div class="case-card-header">
+          <span class="case-card-company">Shopify</span>
+          <span class="case-card-tagline">Growing as a designer</span>
+        </div>
+        <p class="case-card-desc">In a moment when the tools, skills, and expectations are all shifting at once, how can designers grow and thrive?</p>
+        <span class="case-card-cta">Get notified →</span>
+      </a>
+      <a href="https://example.com/" class="case-card">
+        <div class="case-card-badge">Coming soon</div>
+        <div class="case-card-header">
+          <span class="case-card-company">Notion</span>
+          <span class="case-card-tagline">Working alongside agents</span>
+        </div>
+        <p class="case-card-desc">What does it feel like to design alongside agents when the tools and workflows change but the philosophy doesn't?</p>
+        <span class="case-card-cta">Get notified →</span>
+      </a>
+      <a href="https://example.com/" class="case-card">
+        <div class="case-card-badge">Coming soon</div>
+        <div class="case-card-header">
+          <span class="case-card-company">Linear</span>
+          <span class="case-card-tagline">Protecting the space to explore</span>
+        </div>
+        <p class="case-card-desc">As AI accelerates everything, how do you defend the slower, more deliberate parts of the design process?</p>
+        <span class="case-card-cta">Get notified →</span>
+      </a>
+      <a href="https://example.com/" class="case-card">
+        <div class="case-card-badge">Coming soon</div>
+        <div class="case-card-header">
+          <span class="case-card-company">Framer</span>
+          <span class="case-card-tagline">Designing the design tools</span>
+        </div>
+        <p class="case-card-desc">When most AI tools optimize for generation, what does it look like to build one that protects design control instead?</p>
+        <span class="case-card-cta">Get notified →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== SCENE 8: VIDEO SECTION ===== -->
+  <section class="video-section" id="video-section">
+    <div class="video-card">
+      <div class="video-card-media">
+        <video autoplay muted loop playsinline
+          poster="https://i.ytimg.com/vi_webp/hoAse4DybPY/maxresdefault.webp"
+          src="https://framerusercontent.com/assets/4RQvaMC0xNnbs7f7MQ6hG63i2pM.webm">
+        </video>
+        <button class="video-play-btn" aria-label="Play video"></button>
+      </div>
+      <div class="video-card-content">
+        <p class="video-card-badge">Coming soon</p>
+        <h3 class="video-card-title">Inside AI-native design teams</h3>
+        <p class="video-card-desc">Seven video case studies with the design teams at Anthropic, Framer, Linear, Notion, Shopify, Sierra, and Stripe. Go inside the workflows they've rebuilt, the tradeoffs they're navigating, and how they're operating differently as a team.</p>
+        <a href="https://example.com/" class="video-card-link">
+          Get notified when they're released →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCENE 9: SUBSCRIBE ===== -->
+  <section class="subscribe" id="scroll-to-subscribe">
+    <div class="subscribe-inner">
+      <div>
+        <h2 class="subscribe-heading reveal">Get new case studies &amp; report markdown</h2>
+        <h3 class="subscribe-desc reveal">Download the markdown version of the report, ready to drop into any tool. Get notified as new case studies go live.</h3>
+      </div>
+      <div>
+        <form class="subscribe-form" onsubmit="event.preventDefault();">
+          <input type="email" class="subscribe-input" placeholder="Your email" required>
+          <button type="submit" class="subscribe-btn">Submit</button>
+        </form>
+        <p class="subscribe-disclaimer">
+          By subscribing, you agree to receive communications from
+          <a href="https://example.com/">Designer Fund</a> and
+          <a href="https://example.com/">Foundation Capital</a>
+          in accordance with their privacy policies.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCENE 10: FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="methodology">
+        <div>
+          <p class="methodology-label">Methodology</p>
+          <p class="methodology-text">This report draws from</p>
+        </div>
+        <div class="methodology-stats">
+          <div class="methodology-stat">
+            <div class="stat-num counter" data-target="900">0</div>
+            <div class="stat-label">Survey responses</div>
+          </div>
+          <div class="methodology-stat">
+            <div class="stat-num"><span class="counter" data-target="20">0</span>+</div>
+            <div class="stat-label">Interviews</div>
+          </div>
+          <div class="methodology-stat">
+            <div class="stat-num"><span class="counter" data-target="50">0</span>+</div>
+            <div class="stat-label">Public sources</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-columns">
+        <div>
+          <p class="footer-col-label">Report Partners</p>
+          <a href="https://example.com/" class="footer-col-link">Anthropic</a>
+          <a href="https://example.com/" class="footer-col-link">Framer</a>
+          <a href="https://example.com/" class="footer-col-link">Stripe</a>
+          <a href="https://example.com/" class="footer-col-link">Sierra</a>
+          <a href="https://example.com/" class="footer-col-link">Notion</a>
+          <a href="https://example.com/" class="footer-col-link">Shopify</a>
+          <a href="https://example.com/" class="footer-col-link">Linear</a>
+        </div>
+        <div>
+          <p class="footer-col-label">Report</p>
+          <a href="https://example.com/" class="footer-col-link">Read the Report</a>
+          <a href="https://example.com/" class="footer-col-link">About</a>
+          <a href="https://example.com/" class="footer-col-link">Case Studies</a>
+        </div>
+        <div>
+          <p class="footer-col-label">Connect</p>
+          <a href="https://example.com/" class="footer-col-link">Designer Fund</a>
+          <a href="https://example.com/" class="footer-col-link">Foundation Capital</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy;2026 Designer Fund, Foundation Capital. All rights reserved</span>
+        <div class="footer-bottom-links">
+          <a href="https://example.com/">Designer Fund</a>
+          <a href="https://example.com/">Foundation Capital</a>
+          <a href="https://example.com/">Made in Framer by ++hellohello</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Custom Script (after GSAP CDN) -->
+  <script src="script.js"></script>
+</body>
+</html>

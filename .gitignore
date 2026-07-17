@@ -3,6 +3,7 @@
 .omx/
 .claude/
 .cursor/
+.playwright-mcp/
 .DS_Store
 Thumbs.db
 

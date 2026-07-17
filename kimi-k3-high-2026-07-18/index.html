@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI in Design Report 2026</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <div class="loader-inner">
+    <span class="loader-logo">AïD&nbsp;26</span>
+  </div>
+</div>
+
+<!-- Mouse particle trail canvas -->
+<canvas id="trail"></canvas>
+
+<!-- Fixed Nav -->
+<header id="nav">
+  <a href="https://example.com/" class="nav-logo">AïD&nbsp;26</a>
+  <div class="nav-item nav-dd" id="dd-report">
+    <button class="nav-btn nav-btn-orange" type="button">Read the Report <span class="plus">+</span></button>
+    <div class="dd-panel">
+      <a href="https://example.com/" class="dd-row"><span>Tools</span><span class="dd-num">01</span></a>
+      <a href="https://example.com/" class="dd-row"><span>Craft</span><span class="dd-num">02</span></a>
+      <a href="https://example.com/" class="dd-row"><span>Teams</span><span class="dd-num">03</span></a>
+      <div class="dd-foot">©2026 DESIGNER FUND, FOUNDATION CAPITAL. ALL RIGHTS RESERVED</div>
+    </div>
+  </div>
+  <div class="nav-spacer"></div>
+  <a href="https://example.com/" class="nav-btn nav-btn-plain">About</a>
+  <div class="nav-item nav-dd" id="dd-cases">
+    <button class="nav-btn nav-btn-plain" type="button">Case Studies <span class="plus">+</span></button>
+    <div class="dd-panel dd-panel-right">
+      <a href="https://example.com/" class="dd-row"><span>Framer</span><span class="dd-num">01</span><span class="dd-soon">Coming soon</span></a>
+      <a href="https://example.com/" class="dd-row"><span>Sierra</span><span class="dd-num">02</span><span class="dd-soon">Coming soon</span></a>
+      <a href="https://example.com/" class="dd-row"><span>Shopify</span><span class="dd-num">03</span><span class="dd-soon">Coming soon</span></a>
+      <a href="https://example.com/" class="dd-row"><span>Notion</span><span class="dd-num">04</span><span class="dd-soon">Coming soon</span></a>
+      <a href="https://example.com/" class="dd-row"><span>Stripe</span><span class="dd-num">05</span><span class="dd-soon">Coming soon</span></a>
+      <a href="https://example.com/" class="dd-row"><span>Linear</span><span class="dd-num">06</span><span class="dd-soon">Coming soon</span></a>
+      <a href="https://example.com/" class="dd-row"><span>Anthropic</span><span class="dd-num">07</span><span class="dd-soon">Coming soon</span></a>
+      <div class="dd-foot">©2026 DESIGNER FUND, FOUNDATION CAPITAL. ALL RIGHTS RESERVED</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Scene 1: Hero -->
+  <section id="hero">
+    <div class="hero-video-wrap">
+      <video id="heroVideo" autoplay muted loop playsinline
+        poster="https://framerusercontent.com/images/LKdFBU4cZXjWWQJR62rMmwUFg.jpg?width=1920&height=1080"
+        src="https://framerusercontent.com/assets/60TSo4WrKzA27Mp4KCDTmVbhc.webm"></video>
+    </div>
+    <p class="hero-tagline">How designers are evolving their tools,<br>craft, and teams with AI</p>
+    <h1 class="hero-title">AI in Design<br>Report 2026</h1>
+    <div class="hero-bottom">
+      <p class="mono hero-credit">BY DESIGNER FUND IN PARTNERSHIP<br>WITH FOUNDATION CAPITAL</p>
+      <a href="https://example.com/" class="hero-scroll">Scroll to read</a>
+      <span class="hero-arrow">↓</span>
+    </div>
+  </section>
+
+  <!-- Scene 2: Partners -->
+  <section id="partners">
+    <hr class="rule">
+    <p class="mono label reveal">OUR PARTNERS</p>
+    <div class="partners-row reveal">
+      <span class="plogo">Notion</span>
+      <span class="plogo">SIERRA</span>
+      <span class="plogo">Framer</span>
+      <span class="plogo">Linear</span>
+      <span class="plogo plogo-mono">ANTHROP\C</span>
+      <span class="plogo plogo-italic">shopify</span>
+      <span class="plogo">stripe</span>
+    </div>
+    <hr class="rule">
+    <p class="mono label reveal">AN INFLECTION POINT</p>
+    <h2 class="inflection-h reveal">In 2025, designers were<br>experimenting with AI. In 2026,<br>they’re rebuilding around it.</h2>
+  </section>
+
+  <!-- Scene 3: Photo + sticky stats -->
+  <section id="stats">
+    <div class="stats-sticky">
+      <div class="stats-photo">
+        <img src="https://framerusercontent.com/images/ytblsBi2O0C6jtd1PYCTXAczI.jpg?scale-down-to=2048&width=3840&height=2160" alt="Two designers working at a laptop">
+      </div>
+      <div class="stats-col">
+        <div class="stat-block stat-purple">
+          <p class="stat-num"><span class="count" data-to="900">0</span>+</p>
+          <p class="stat-cap">Designers surveyed<br>in 60+ countries.</p>
+        </div>
+        <div class="stat-block stat-green">
+          <p class="stat-num"><span class="count" data-to="25">0</span>+</p>
+          <p class="stat-cap">Interviews with<br>practitioners and leaders</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 4: About text -->
+  <section id="about">
+    <div class="about-col">
+      <h3 class="about-h reveal">AI in Design 2026 aims to capture how AI is transforming tech design across designers’ desks and within their teams.</h3>
+      <p class="about-p reveal">We ran our first AI in Design survey in early 2025 because we consistently heard designers and leaders ask, “How are others doing this, and what’s working?” A year later, we’re attempting to get a sense for what’s changed and share firsthand perspectives.</p>
+      <p class="about-p reveal">The answers come from over 900 designers at startups, enterprises, and agencies who work across disciplines like product design, brand design, research, and design engineering. We also conducted over 20 interviews with leaders at companies actively navigating this shift.</p>
+      <p class="about-p reveal">Given how quickly practices are evolving, we’ll continue to release new findings throughout the year, including case studies about design at companies like Anthropic, Sierra, Stripe, Notion, Shopify, Linear, and Framer. <a href="https://example.com/" class="u-link">Sign up for new releases.</a></p>
+    </div>
+  </section>
+
+  <!-- Scene 5: Quote -->
+  <section id="quote">
+    <div class="quote-left">
+      <span class="quote-mark">“</span>
+      <img class="quote-avatar" src="https://framerusercontent.com/images/ILvJ4Wz4i6yJ8F12oB7DbSiYhI.png?width=176&height=176" alt="Katie Dill">
+      <p class="quote-name">Katie Dill</p>
+      <p class="mono quote-role">HEAD OF DESIGN, STRIPE</p>
+    </div>
+    <div class="quote-right">
+      <h3 class="quote-text reveal">AI is sparking a creative renaissance in design. With new instruments, it’s our chance to compose wholly new music.</h3>
+    </div>
+  </section>
+
+  <!-- Scenes 6-8: Sticky chapters -->
+  <section id="chapters">
+    <div class="chapter chapter-orange">
+      <div class="ch-top">
+        <div class="ch-left">
+          <h2 class="ch-num">01</h2>
+          <h2 class="ch-name">Tools</h2>
+        </div>
+        <div class="ch-right">
+          <h3 class="ch-title">The great<br>toolstack shakeup</h3>
+          <p class="ch-p">AI usage has surged, but the toolstack is still in flux. Designers are using double the number of off-the-shelf tools than they did in 2025, and they’re building custom software with AI that matches how they like to work. As everyone rushes to keep up with new releases, reliable output quality remains the largest area for improvement.</p>
+        </div>
+      </div>
+      <div class="ch-bottom">
+        <div class="ch-media">
+          <video autoplay muted loop playsinline src="https://framerusercontent.com/assets/GxhkDLcDBfujafaVJCiFKoxE.webm"></video>
+        </div>
+        <div class="ch-list">
+          <p class="mono ch-cover">IN THIS CHAPTER, WE’LL COVER:</p>
+          <ul>
+            <li>The most-used AI design tools</li>
+            <li>The toolstack that's multiplying</li>
+            <li>What makes tools stick (+ why many don’t)</li>
+            <li>Designers as builders of their own tools</li>
+            <li>Tool fatigue and the pressure to keep up</li>
+          </ul>
+          <a href="https://example.com/" class="ch-cta">Read the Tools Chapter <span class="cta-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapter chapter-purple">
+      <div class="ch-top">
+        <div class="ch-left">
+          <h2 class="ch-num">02</h2>
+          <h2 class="ch-name">Craft</h2>
+        </div>
+        <div class="ch-right">
+          <h3 class="ch-title">Craft in the age<br>of infinite output</h3>
+          <p class="ch-p">Everyone is shipping faster. But is speed good for craft? AI has unlocked a new gear for designers: they’re ideating faster, prototyping more, and learning to code. Half of respondents have pushed AI-generated code to production. At the same time, we hear concerns about craft atrophy and the loneliness of designing alongside AI instead of teammates.</p>
+        </div>
+      </div>
+      <div class="ch-bottom">
+        <div class="ch-media">
+          <video autoplay muted loop playsinline src="https://framerusercontent.com/assets/lL79Fmd1Pvt2WDRdt11xdoPD3Uw.webm"></video>
+        </div>
+        <div class="ch-list">
+          <p class="mono ch-cover">IN THIS CHAPTER, WE’LL COVER:</p>
+          <ul>
+            <li>Coding as a core design skill</li>
+            <li>Prototyping as a default output</li>
+            <li>The tension between speed and quality</li>
+            <li>Preserving judgment and taste</li>
+            <li>The trend toward designers as builders</li>
+          </ul>
+          <a href="https://example.com/" class="ch-cta">Read the Craft Chapter <span class="cta-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapter chapter-green">
+      <div class="ch-top">
+        <div class="ch-left">
+          <h2 class="ch-num">03</h2>
+          <h2 class="ch-name">Teams</h2>
+        </div>
+        <div class="ch-right">
+          <h3 class="ch-title">Redesigning<br>the design org</h3>
+          <p class="ch-p">AI gave designers new powers. Now organizations need to adapt. Roles are blurring as designers take on PM and engineering work, and vice versa. Hiring managers want AI fluency alongside a high bar for craft, vision, and storytelling. But few companies have updated performance reviews, team structures, or hiring practices to match how the work has changed.</p>
+        </div>
+      </div>
+      <div class="ch-bottom">
+        <div class="ch-media">
+          <video autoplay muted loop playsinline src="https://framerusercontent.com/assets/n4xIX9MPpD5lGFog1WLZ2I2UQyY.webm"></video>
+        </div>
+        <div class="ch-list">
+          <p class="mono ch-cover">IN THIS CHAPTER, WE’LL COVER:</p>
+          <ul>
+            <li>How companies support AI adoption</li>
+            <li>Blurring of design, PM, and engineering</li>
+            <li>The messy nature of collaboration</li>
+            <li>Changing expectations and company policy</li>
+            <li>What hiring managers are now looking for</li>
+          </ul>
+          <a href="https://example.com/" class="ch-cta">Read the Teams Chapter <span class="cta-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scenes 9-10: Video case studies carousel -->
+  <section id="cases">
+    <hr class="rule">
+    <p class="mono label reveal">VIDEO CASE STUDIES</p>
+    <div class="cases-head">
+      <h2 class="cases-h reveal">Seven companies. Seven ways<br>of navigating the same shift.</h2>
+      <div class="cases-arrows">
+        <button id="casePrev" class="arrow-btn" type="button" aria-label="Previous">←</button>
+        <button id="caseNext" class="arrow-btn" type="button" aria-label="Next">→</button>
+      </div>
+    </div>
+    <div class="cases-track" id="casesTrack">
+      <a href="https://example.com/" class="case-card">
+        <div class="case-media"><img src="https://framerusercontent.com/images/9q6atfyxUQWgbbNEpOcKeKHVMo8.png?scale-down-to=2048&width=3840&height=2160" alt="Stripe"><span class="case-soon">Coming soon</span><span class="case-bar"></span></div>
+        <h4 class="case-name">Stripe</h4>
+        <p class="case-sub">Creating the<br>conditions for adoption</p>
+        <p class="case-q">How do you build a culture that enables AI adoption instead of dictating the playbook?</p>
+        <p class="case-link">Get notified <span>→</span></p>
+      </a>
+      <a href="https://example.com/" class="case-card">
+        <div class="case-media"><img src="https://framerusercontent.com/images/BjnduoVw73i89zvx0jvqhBI6pY.png?scale-down-to=2048&width=3840&height=2160" alt="Sierra"><span class="case-soon">Coming soon</span><span class="case-bar"></span></div>
+        <h4 class="case-name">Sierra</h4>
+        <p class="case-sub">Scaling craft, keeping the bar</p>
+        <p class="case-q">How does a small design team supporting 100+ engineers protect craft without lowering the bar?</p>
+        <p class="case-link">Get notified <span>→</span></p>
+      </a>
+      <a href="https://example.com/" class="case-card">
+        <div class="case-media"><img src="https://framerusercontent.com/images/qsqwQqO5XlCp5ZWs7hJuiL0Y.png?scale-down-to=2048&width=3840&height=2160" alt="Anthropic"><span class="case-soon">Coming soon</span><span class="case-bar"></span></div>
+        <h4 class="case-name">Anthropic</h4>
+        <p class="case-sub">When code is no<br>longer the constraint</p>
+        <p class="case-q">When AI writes most of the code, how should the design team operate?</p>
+        <p class="case-link">Get notified <span>→</span></p>
+      </a>
+      <a href="https://example.com/" class="case-card">
+        <div class="case-media"><img src="https://framerusercontent.com/images/sVDqVYB6apEiCQWv3SUiu02DuE.jpg?scale-down-to=2048&width=3840&height=2160" alt="Shopify"><span class="case-soon">Coming soon</span><span class="case-bar"></span></div>
+        <h4 class="case-name">Shopify</h4>
+        <p class="case-sub">Growing as a designer</p>
+        <p class="case-q">In a moment when the tools, skills, and expectations are all shifting at once, how can designers grow and thrive?</p>
+        <p class="case-link">Get notified <span>→</span></p>
+      </a>
+      <a href="https://example.com/" class="case-card">
+        <div class="case-media"><img src="https://framerusercontent.com/images/vdlaU7hXYvHA03hPLaBqE2TMTIA.jpg?scale-down-to=2048&width=3840&height=2160" alt="Notion"><span class="case-soon">Coming soon</span><span class="case-bar"></span></div>
+        <h4 class="case-name">Notion</h4>
+        <p class="case-sub">Working alongside agents</p>
+        <p class="case-q">What does it feel like to design alongside agents when the tools and workflows change but the philosophy doesn't?</p>
+        <p class="case-link">Get notified <span>→</span></p>
+      </a>
+      <a href="https://example.com/" class="case-card">
+        <div class="case-media"><img src="https://framerusercontent.com/images/aoiJOJb5U9lPHiXQOrywfzn8ftQ.png?scale-down-to=2048&width=3840&height=2160" alt="Linear"><span class="case-soon">Coming soon</span><span class="case-bar"></span></div>
+        <h4 class="case-name">Linear</h4>
+        <p class="case-sub">Protecting the space to explore</p>
+        <p class="case-q">As AI accelerates everything, how do you defend the slower, more deliberate parts of the design process?</p>
+        <p class="case-link">Get notified <span>→</span></p>
+      </a>
+      <a href="https://example.com/" class="case-card">
+        <div class="case-media"><img src="https://framerusercontent.com/images/rd6RC3C2g354mvaTXc22Z8hsrkI.png?scale-down-to=2048&width=2640&height=1478" alt="Framer"><span class="case-soon">Coming soon</span><span class="case-bar"></span></div>
+        <h4 class="case-name">Framer</h4>
+        <p class="case-sub">Designing the design tools</p>
+        <p class="case-q">When most AI tools optimize for generation, what does it look like to build one that protects design control instead?</p>
+        <p class="case-link">Get notified <span>→</span></p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Scene 11: Coming soon video -->
+  <section id="coming">
+    <hr class="rule">
+    <p class="mono label reveal">COMING SOON</p>
+    <div class="coming-grid">
+      <div class="coming-spacer"></div>
+      <div class="coming-main">
+        <div class="coming-thumb reveal">
+          <img src="https://i.ytimg.com/vi_webp/hoAse4DybPY/maxresdefault.webp" alt="Inside AI-native design teams video">
+          <button class="play-btn" type="button" aria-label="Play video: Inside AI-native design teams">▶</button>
+        </div>
+        <h3 class="coming-h reveal">Inside AI-native design teams</h3>
+        <p class="coming-p reveal">Seven video case studies with the design teams at Anthropic, Framer, Linear, Notion, Shopify, Sierra, and Stripe. Go inside the workflows they've rebuilt, the tradeoffs they're navigating, and how they’re operating differently as a team.</p>
+        <a href="https://example.com/" class="coming-link reveal">Get notified when they’re released <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 12: Subscribe + methodology -->
+  <section id="subscribe">
+    <div class="sub-bg">
+      <video autoplay muted loop playsinline src="https://framerusercontent.com/assets/4RQvaMC0xNnbs7f7MQ6hG63i2pM.webm"></video>
+    </div>
+    <div class="sub-inner">
+      <h2 class="sub-h reveal">Get new case studies<br>&amp; report markdown</h2>
+      <p class="sub-p reveal">Download the markdown version of the report, ready to drop into any tool.<br>Get notified as new case studies go live.</p>
+      <form class="sub-form reveal" id="subForm">
+        <input type="email" required placeholder="Your email" class="sub-input" aria-label="Your email">
+        <button type="submit" class="sub-btn">Submit</button>
+      </form>
+      <p class="sub-legal reveal">By subscribing, you agree to receive communications from <a href="https://example.com/" class="u-link">Designer Fund</a> and <a href="https://example.com/" class="u-link">Foundation Capital</a> in accordance with their privacy policies.</p>
+    </div>
+    <div class="method">
+      <hr class="rule rule-dark">
+      <p class="mono label label-dark reveal">METHODOLOGY</p>
+      <div class="method-grid">
+        <p class="method-from reveal">This report<br>draws from</p>
+        <div class="method-stat reveal">
+          <p class="method-num"><span class="count" data-to="906">0</span></p>
+          <p class="method-cap">Survey responses</p>
+        </div>
+        <div class="method-stat reveal">
+          <p class="method-num"><span class="count" data-to="25">0</span>+</p>
+          <p class="method-cap">Interviews</p>
+        </div>
+        <div class="method-stat reveal">
+          <p class="method-num"><span class="count" data-to="50">0</span>+</p>
+          <p class="method-cap">Public sources</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 13: Footer -->
+  <footer id="footer">
+    <div class="foot-giant">
+      <p class="foot-word">Aï&nbsp;in&nbsp;Design<sup class="foot-tm">™</sup></p>
+    </div>
+    <div class="foot-mid">
+      <div class="foot-cols">
+        <div class="foot-col">
+          <p class="mono foot-label">REPORT PARTNERS</p>
+          <div class="foot-partners">
+            <div>
+              <a href="https://example.com/">Anthropic</a>
+              <a href="https://example.com/">Stripe</a>
+              <a href="https://example.com/">Notion</a>
+              <a href="https://example.com/">Linear</a>
+            </div>
+            <div>
+              <a href="https://example.com/">Framer</a>
+              <a href="https://example.com/">Sierra</a>
+              <a href="https://example.com/">Shopify</a>
+            </div>
+          </div>
+        </div>
+        <div class="foot-col">
+          <p class="mono foot-label">REPORT</p>
+          <a href="https://example.com/">Read the Report</a>
+          <a href="https://example.com/">About</a>
+          <a href="https://example.com/">Case Studies</a>
+        </div>
+      </div>
+      <p class="foot-year">2026</p>
+    </div>
+    <hr class="rule rule-dark">
+    <div class="foot-bottom">
+      <p>©2026 Designer Fund, Foundation Capital. All rights reserved</p>
+      <p><span class="foot-df">Designer Fund</span> · <span class="foot-fc">foundation capital</span></p>
+      <a href="https://example.com/">Made in Framer by ++hellohello</a>
+    </div>
+  </footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
