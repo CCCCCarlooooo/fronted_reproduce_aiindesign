@@ -18,3 +18,12 @@ Thumbs.db
 归档/
 归档-*.zip
 归档*.zip
+
+# Large agent transcripts (keep local; share via zip if needed)
+**/session/
+
+# Rank-report visual evidence (pairs / repros / ref screenshots)
+rank_report/pairs/
+rank_report/repros/
+rank_report/ref/
+rank_report/**/*.reclog
