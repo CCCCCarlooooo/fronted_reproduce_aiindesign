@@ -32,16 +32,42 @@
   /* ---------- 2. Hero: intro video plays once, then crossfade to loop ---------- */
   var heroIntro = document.getElementById('hero-intro');
   var heroLoop = document.getElementById('hero-loop');
+  var heroIntroFinished = false;
+
+  function safePlay(video) {
+    if (!video || document.hidden) return;
+    var promise = video.play();
+    if (promise && promise.catch) promise.catch(function () {});
+  }
+
+  function showMediaFallback(video) {
+    if (!video) return;
+    video.pause();
+    var container = video.closest('.chapter-media, .soon-video');
+    if (container) container.classList.add('media-failed');
+  }
+
+  document.querySelectorAll('.chapter-media video, .soon-video video').forEach(function (video) {
+    video.addEventListener('error', function () { showMediaFallback(video); });
+  });
 
   function startLoop() {
     if (!heroLoop) return;
-    heroLoop.classList.add('active');
+    heroIntroFinished = true;
     var p = heroLoop.play();
-    if (p && p.catch) p.catch(function () { /* poster stays visible */ });
+    if (p && p.then) {
+      p.then(function () { heroLoop.classList.add('active'); })
+        .catch(function () { heroLoop.classList.remove('active'); });
+    } else {
+      heroLoop.classList.add('active');
+    }
   }
   if (heroIntro) {
     heroIntro.addEventListener('ended', startLoop);
-    heroIntro.addEventListener('error', startLoop);
+    heroIntro.addEventListener('error', function () {
+      heroIntro.style.display = 'none';
+      startLoop();
+    });
     // if autoplay was blocked or the file stalls, fall back to the loop/poster
     setTimeout(function () {
       if (heroIntro.paused && heroIntro.currentTime === 0) startLoop();
@@ -119,17 +145,18 @@
     document.querySelectorAll('[data-chapter]').forEach(function (ch) {
       var inner = ch.querySelector('.chapter-inner');
       gsap.fromTo(inner,
-        { y: 70 },
+        { yPercent: -100 },
         {
-          y: 0, ease: 'none',
+          yPercent: 0, ease: 'none',
           scrollTrigger: { trigger: ch, start: 'top bottom', end: 'top top', scrub: true }
         });
 
       var nextChapter = ch.nextElementSibling;
       if (nextChapter && nextChapter.matches('[data-chapter]')) {
+        var isToolsChapter = ch.classList.contains('chapter-tools');
         gsap.to(inner, {
-          yPercent: -78,
-          ease: 'none',
+          y: isToolsChapter ? -860 : -950,
+          ease: isToolsChapter ? 'none' : 'power1.in',
           scrollTrigger: { trigger: nextChapter, start: 'top bottom', end: 'top top', scrub: true }
         });
       }
@@ -150,7 +177,46 @@
       });
   }
 
-  /* ---------- 5. Case Studies fullscreen menu ---------- */
+  /* ---------- 5. Header menus ---------- */
+  var reportMenu = document.getElementById('report-menu');
+  var reportTrigger = document.getElementById('read-report-pill');
+  var reportClose = document.getElementById('report-close');
+  var reportOpen = false;
+
+  function openReportMenu(event) {
+    if (event) event.preventDefault();
+    if (reportOpen || !reportMenu) return;
+    if (menuOpen) closeMenu();
+    reportOpen = true;
+    document.body.classList.add('menu-open');
+    reportMenu.setAttribute('aria-hidden', 'false');
+    reportMenu.style.visibility = 'visible';
+    if (hasGSAP) {
+      gsap.fromTo(reportMenu, { xPercent: -100, opacity: 1 }, { xPercent: 0, opacity: 1, duration: .5, ease: 'power3.out' });
+      gsap.fromTo('#report-menu .report-menu-links a', { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: .45, stagger: .06, delay: .12, ease: 'power2.out' });
+    } else {
+      reportMenu.style.opacity = '1';
+      reportMenu.style.transform = 'translateX(0)';
+    }
+  }
+
+  function closeReportMenu() {
+    if (!reportOpen || !reportMenu) return;
+    reportOpen = false;
+    document.body.classList.remove('menu-open');
+    reportMenu.setAttribute('aria-hidden', 'true');
+    if (hasGSAP) {
+      gsap.to(reportMenu, {
+        xPercent: -100, duration: .38, ease: 'power3.in',
+        onComplete: function () { reportMenu.style.visibility = 'hidden'; }
+      });
+    } else {
+      reportMenu.style.opacity = '0';
+      reportMenu.style.visibility = 'hidden';
+    }
+  }
+
   var casesMenu = document.getElementById('cases-menu');
   var casesTrigger = document.getElementById('cases-trigger');
   var casesClose = document.getElementById('cases-close');
@@ -158,8 +224,10 @@
 
   function openMenu() {
     if (menuOpen || !casesMenu) return;
+    if (reportOpen) closeReportMenu();
     menuOpen = true;
     document.body.classList.add('menu-open');
+    casesMenu.setAttribute('aria-hidden', 'false');
     casesMenu.style.visibility = 'visible';
     if (hasGSAP) {
       gsap.fromTo(casesMenu, { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' });
@@ -173,6 +241,7 @@
     if (!menuOpen || !casesMenu) return;
     menuOpen = false;
     document.body.classList.remove('menu-open');
+    casesMenu.setAttribute('aria-hidden', 'true');
     if (hasGSAP) {
       gsap.to(casesMenu, {
         opacity: 0, y: -20, duration: 0.35, ease: 'power2.in',
@@ -185,7 +254,14 @@
   }
   if (casesTrigger) casesTrigger.addEventListener('click', openMenu);
   if (casesClose) casesClose.addEventListener('click', closeMenu);
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+  if (reportTrigger) reportTrigger.addEventListener('click', openReportMenu);
+  if (reportClose) reportClose.addEventListener('click', closeReportMenu);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closeMenu();
+      closeReportMenu();
+    }
+  });
 
   /* ---------- 6. Carousel: arrows + pointer drag ---------- */
   var track = document.getElementById('carousel');
@@ -193,34 +269,50 @@
   var nextBtn = document.getElementById('car-next');
   var CARD_STEP = 476; // card width 460 + gap 16
 
+  function getCardStep() {
+    if (!track) return CARD_STEP;
+    var card = track.querySelector('.case-card');
+    if (!card) return CARD_STEP;
+    var gap = parseFloat(window.getComputedStyle(track).columnGap || window.getComputedStyle(track).gap) || 0;
+    return card.getBoundingClientRect().width + gap;
+  }
+
   function updateArrows() {
     if (!track || !prevBtn || !nextBtn) return;
     prevBtn.disabled = track.scrollLeft <= 4;
     nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
   }
   if (track) {
-    if (prevBtn) prevBtn.addEventListener('click', function () { track.scrollBy({ left: -CARD_STEP, behavior: 'smooth' }); });
-    if (nextBtn) nextBtn.addEventListener('click', function () { track.scrollBy({ left: CARD_STEP, behavior: 'smooth' }); });
+    if (prevBtn) prevBtn.addEventListener('click', function () { track.scrollBy({ left: -getCardStep(), behavior: 'smooth' }); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { track.scrollBy({ left: getCardStep(), behavior: 'smooth' }); });
     track.addEventListener('scroll', updateArrows, { passive: true });
     updateArrows();
 
     // pointer drag-to-scroll; suppress the click that would follow a real drag
     var dragging = false, dragMoved = false, startX = 0, startScroll = 0;
+    var activePointer = null;
     track.addEventListener('pointerdown', function (e) {
       dragging = true; dragMoved = false;
+      activePointer = e.pointerId;
       startX = e.clientX; startScroll = track.scrollLeft;
       track.classList.add('dragging');
+      track.setPointerCapture(e.pointerId);
     });
-    window.addEventListener('pointermove', function (e) {
-      if (!dragging) return;
+    track.addEventListener('pointermove', function (e) {
+      if (!dragging || e.pointerId !== activePointer) return;
       var dx = e.clientX - startX;
       if (Math.abs(dx) > 6) dragMoved = true;
       track.scrollLeft = startScroll - dx;
     });
-    window.addEventListener('pointerup', function () {
+    function endDrag(e) {
+      if (activePointer !== null && e.pointerId !== activePointer) return;
       dragging = false;
+      activePointer = null;
       track.classList.remove('dragging');
-    });
+    }
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+    track.addEventListener('lostpointercapture', endDrag);
     track.addEventListener('click', function (e) {
       if (dragMoved) { e.preventDefault(); e.stopPropagation(); dragMoved = false; }
     }, true);
@@ -230,8 +322,10 @@
   var canvas = document.getElementById('fx-canvas');
   if (canvas && canvas.getContext) {
     var ctx = canvas.getContext('2d');
-    var DPR = Math.min(window.devicePixelRatio || 1, 2);
+    var DPR = 1;
     var particles = [];
+    var animationFrame = null;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var MAX_PARTICLES = 130;
     var PALETTE = [
       [254, 113, 65],   // orange
@@ -243,6 +337,7 @@
     var lastX = null, lastY = null;
 
     function resizeCanvas() {
+      DPR = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.floor(window.innerWidth * DPR);
       canvas.height = Math.floor(window.innerHeight * DPR);
       canvas.style.width = window.innerWidth + 'px';
@@ -269,6 +364,7 @@
     }
 
     window.addEventListener('pointermove', function (e) {
+      if (reduceMotion || document.hidden) return;
       var speed = 0;
       if (lastX !== null) {
         speed = Math.hypot(e.clientX - lastX, e.clientY - lastY);
@@ -276,6 +372,7 @@
       lastX = e.clientX; lastY = e.clientY;
       var count = speed > 22 ? 3 : speed > 8 ? 2 : 1;
       for (var i = 0; i < count; i++) spawn(e.clientX, e.clientY, speed);
+      if (animationFrame === null) animationFrame = requestAnimationFrame(tick);
     }, { passive: true });
 
     function tick() {
@@ -296,9 +393,16 @@
         ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
         ctx.fill();
       }
-      requestAnimationFrame(tick);
+      animationFrame = particles.length ? requestAnimationFrame(tick) : null;
     }
-    requestAnimationFrame(tick);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        particles.length = 0;
+        if (animationFrame !== null) cancelAnimationFrame(animationFrame);
+        animationFrame = null;
+        ctx.clearRect(0, 0, canvas.width / DPR, canvas.height / DPR);
+      }
+    });
   }
 
   /* ---------- 8. Giant footer wordmark: fit to container width ---------- */
@@ -313,6 +417,7 @@
       size = Math.floor(size * target / w);
       wordmark.style.fontSize = size + 'px';
     }
+    if (hasGSAP && typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
   }
   fitWordmark();
   window.addEventListener('resize', fitWordmark);
@@ -322,20 +427,51 @@
     window.addEventListener('load', fitWordmark);
   }
 
-  /* ---------- 9. Chapter videos: pause offscreen (perf) ---------- */
-  if ('IntersectionObserver' in window) {
-    var vids = document.querySelectorAll('.chapter-media video');
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        var v = en.target;
-        if (en.isIntersecting) {
-          var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
-        } else {
-          v.pause();
-        }
-      });
-    }, { threshold: 0.05 });
-    vids.forEach(function (v) { io.observe(v); });
+  /* ---------- 9. Scene-aware video lifecycle ---------- */
+  var managedVideos = Array.prototype.slice.call(document.querySelectorAll('video'));
+  var videoUpdateFrame = null;
+
+  function pauseExcept(activeVideo) {
+    managedVideos.forEach(function (video) {
+      if (video !== activeVideo && video !== heroIntro && !video.paused) video.pause();
+    });
+    if (heroIntro && activeVideo !== heroIntro && !heroIntro.paused) heroIntro.pause();
+    safePlay(activeVideo);
   }
+
+  function activeSceneVideo() {
+    if (document.hidden) return null;
+    var viewportHeight = window.innerHeight;
+    var soon = document.querySelector('.soon-video video');
+    var soonRect = soon ? soon.closest('#coming-soon').getBoundingClientRect() : null;
+    if (soonRect && soonRect.top < viewportHeight * 0.8 && soonRect.bottom > viewportHeight * 0.2) return soon;
+
+    var activeChapter = null;
+    document.querySelectorAll('[data-chapter]').forEach(function (chapter) {
+      var rect = chapter.getBoundingClientRect();
+      if (rect.top <= viewportHeight * 0.5 && rect.bottom > 0) activeChapter = chapter.querySelector('video');
+    });
+    if (activeChapter) return activeChapter;
+
+    var heroRect = document.getElementById('hero').getBoundingClientRect();
+    if (heroRect.bottom > 0 && heroRect.top < viewportHeight) {
+      return heroIntroFinished ? heroLoop : heroIntro;
+    }
+    return null;
+  }
+
+  function updateActiveVideo() {
+    videoUpdateFrame = null;
+    pauseExcept(activeSceneVideo());
+  }
+
+  function requestVideoUpdate() {
+    if (videoUpdateFrame === null) videoUpdateFrame = requestAnimationFrame(updateActiveVideo);
+  }
+
+  window.addEventListener('scroll', requestVideoUpdate, { passive: true });
+  window.addEventListener('resize', requestVideoUpdate);
+  document.addEventListener('visibilitychange', requestVideoUpdate);
+  requestVideoUpdate();
 
 })();

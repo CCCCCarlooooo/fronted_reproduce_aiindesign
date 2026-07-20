@@ -240,14 +240,15 @@
       "file": "scroll-11-09900.png"
     },
     {
-      "requested_y": 10310,
-      "actual_y": 10310,
-      "file": "scroll-12-10310.png"
+      "requested_y": 10331,
+      "actual_y": 10331,
+      "file": "scroll-12-10331.png"
     }
   ],
   "dimensions": {
-    "scrollHeight": 11210,
+    "scrollHeight": 11231,
     "clientHeight": 900,
     "clientWidth": 1440
-  }
+  },
+  "expected_media_aborts": []
 }

@@ -12,7 +12,7 @@
 |---|------|---------|----------------|-----------|--------|-----------|------|
 | 0 | Loader/Logo intro | 加载时 | — | AiiD 26 logo intro（Framer "Logo Intro Container"） | 黑/白 | logo 显现后揭开页面 | — |
 | 1 | Hero | 0–900 | "How designers are evolving their tools, craft, and teams with AI" / "AI in Design Report 2026"(h1 120px/lh114/ls-7.2) / "BY DESIGNER FUND IN PARTNERSHIP WITH FOUNDATION CAPITAL"(mono) / "Scroll to read"+↓ | 顶部480px 热感花朵/人像拼贴视频：intro `11fQjZ8SBLFtf9GDiGqEbzqKI8.webm`(播一次)→loop `60TSo4WrKzA27Mp4KCDTmVbhc.webm`；poster `LKdFBU4cZXjWWQJR62rMmwUFg.jpg`；画面内含 FOUNDER / CREATIVE DIRECTOR 标签(烧在视频里) | 橙/粉/绿/紫拼贴+白 | 视频自动播放；标题入场；Scroll cue | scroll-00-0000.png |
-| 1b | Header | 固定 | "AiiD™26" 黑块 / "Read the Report +" 橙块 / "About" / "Case Studies +" | — | 黑/橙#FE7141/白 | Case Studies 悬停变淡紫#CDABFE；点击开全屏淡紫菜单；Read the Report 点击开章节菜单 | hover-nav-casestudies.png, nav-dropdown-open.png |
+| 1b | Header | 首屏顶部 | "AiiD™26" 黑块 / "Read the Report +" 橙块 / "About" / "Case Studies +" | — | 黑/橙#FE7141/白 | Case Studies 悬停变淡紫#CDABFE；点击开全屏淡紫菜单；Read the Report 点击开 584px 橙色章节抽屉 | hover-nav-casestudies.png, nav-dropdown-open.png, read-report-menu.png |
 | 2 | Partners | 900–1298 | "OUR PARTNERS"(mono 13) | 7 logo：Notion, SIERRA, Framer, Linear, ANTHROP\C, shopify, stripe | 黑白 | 顶部细线；logo 行 | scroll-01-0900.png |
 | 3 | Inflection | 1298–1613 | "AN INFLECTION POINT"(mono) / "In 2025, designers were experimenting with AI. In 2026, they're rebuilding around it."(50px/50/ls-2) | 纯文字 | 黑白 | 标签+标题上移入场 | scroll-01-0900.png |
 | 4 | Founders sticky | 1613–2963 | "900+ / Designers surveyed in 60+ countries."(22px) "25+ / Interviews with practitioners and leaders" | 创始人照片 `ytblsBi2O0C6jtd1PYCTXAczI.jpg`(左2/3, 949px)；右1/3 两块面板 | 面板1 淡紫#CDABFE、面板2 灰绿#D1DDD3 | sticky 停留；大数字 ~90px | scroll-02-1800.png |
@@ -29,10 +29,11 @@
 
 ## 鼠标交互证据
 1. 导航 "Case Studies +" hover → 背景变淡紫（hover-nav-casestudies.png）；点击 → 全屏淡紫菜单，双列 7 行案例（名称+上标序号+Coming soon+彩色缩略图），左上 "Case Studies"，右上 ×，底部版权行（nav-dropdown-open.png）
-2. 轮播卡缩略图 `filter: grayscale(1)`（DOM 证据），hover 恢复彩色
-3. "Get notified" 行有独立 "Hover state" 层（DOM）→ 箭头/文字滑动
-4. 黑色 "Read the X Chapter" CTA 条 + 右箭头
-5. 复刻要求新增：原生 Canvas 粒子拖尾（品牌三色柔和光斑），不替代上述具体交互
+2. 导航 "Read the Report +" 点击 → 左侧 584px 橙色 "Report Chapters" 抽屉，Tools/Craft/Teams 三行与关闭按钮（read-report-menu.png）
+3. 轮播卡缩略图 `filter: grayscale(1)`（DOM 证据），hover 恢复彩色
+4. "Get notified" 行有独立 "Hover state" 层（DOM）→ 箭头/文字滑动
+5. 黑色 "Read the X Chapter" CTA 条 + 右箭头
+6. 复刻要求新增：原生 Canvas 粒子拖尾（品牌四色柔和光斑），不替代上述具体交互
 
 ## 资源验证（curl 全部 200/206，2026-07-16）
 见交付报告；所有链接改指 https://example.com/

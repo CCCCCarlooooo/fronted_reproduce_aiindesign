@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Machine Craft Report 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='21' font-family='Helvetica,Arial' font-size='12' font-weight='700' fill='%23fff' text-anchor='middle'%3EMC%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-white text-black antialiased">
+
+<!-- Preloader -->
+<div id="preloader" aria-hidden="true">
+  <div class="pre-mark">MC<span class="pre-tm">™</span>26</div>
+  <div class="pre-bar"><span id="pre-bar-fill"></span></div>
+</div>
+
+<!-- Cursor ink-trail canvas (global) -->
+<canvas id="trail-canvas" aria-hidden="true"></canvas>
+
+<!-- ══════════ SCENE 1 · HERO ══════════ -->
+<header id="hero" class="relative">
+  <!-- Nav row -->
+  <nav class="absolute top-0 left-0 right-0 z-30 flex items-stretch h-14 bg-white">
+    <a href="https://example.com/" class="logo-block flex items-center px-4 font-semibold text-[22px] tracking-tight">MC<span class="logo-tm">™</span>26</a>
+    <a href="https://example.com/" class="cta-orange flex items-center justify-center gap-3 w-[480px] text-[17px] font-medium">Read the Report <span class="plus">+</span></a>
+    <div class="flex-1"></div>
+    <a href="https://example.com/" class="nav-link flex items-center px-6 text-[17px]">About</a>
+    <a href="https://example.com/" class="nav-link flex items-center pl-6 pr-8 text-[17px]">Field Notes <span class="plus ml-2">+</span></a>
+  </nav>
+
+  <!-- Animated collage banner (native canvas, replaces original hero video) -->
+  <div id="hero-banner" class="relative w-full overflow-hidden">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-vignette" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <!-- Floating role tags over the collage -->
+    <div class="hero-tag" data-depth="0.9" style="left:19%; top:42%;"><span class="tag-chip">STUDIO DIRECTOR</span></div>
+    <div class="hero-tag" data-depth="0.6" style="left:66%; top:16%;"><span class="tag-chip">PRODUCT DESIGNER</span></div>
+    <div class="hero-tag" data-depth="0.75" style="left:83%; top:58%;"><span class="tag-chip">DESIGN ENGINEER</span></div>
+  </div>
+
+  <!-- Hero text block -->
+  <div class="hero-text-block relative bg-white px-4 pb-5">
+    <p id="hero-tagline" class="pt-7 text-[19px] leading-snug max-w-[360px]">A field study of how creative teams build with intelligent tools</p>
+    <h1 id="hero-title" class="hero-title absolute top-2 text-left leading-[0.94] tracking-[-0.03em]">
+      <span class="block overflow-hidden"><span class="hero-line block">Machine Craft</span></span>
+      <span class="block overflow-hidden"><span class="hero-line block">Report 2026</span></span>
+    </h1>
+    <div class="absolute left-4 right-4 bottom-6 flex items-end justify-between">
+      <p class="mono-label leading-relaxed">BY FIELDNOTE LABS TOGETHER<br/>WITH NORTH LOOP VENTURES</p>
+      <p class="text-[17px] absolute left-1/2 -translate-x-1/2 bottom-0" id="scroll-cue">Scroll to read</p>
+      <span id="scroll-arrow" class="text-[26px] leading-none select-none" aria-hidden="true">&#8595;</span>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ══════════ SCENE 2 · PARTNERS ══════════ -->
+<section id="partners" class="px-4 pt-5 pb-16 reveal-section">
+  <div class="hairline mb-4"></div>
+  <p class="mono-label mb-16">STUDY PARTNERS</p>
+  <div class="flex items-center justify-between gap-8 flex-wrap partner-row">
+    <span class="partner-logo font-semibold text-[24px]">&#9670; Vertex</span>
+    <span class="partner-logo text-[22px] tracking-[0.18em] font-medium" style="font-family:'IBM Plex Mono',monospace">HALCYON</span>
+    <span class="partner-logo font-semibold text-[24px]"><span class="text-[18px]">&#9650;</span> Oxbow</span>
+    <span class="partner-logo text-[24px] font-medium italic">plume</span>
+    <span class="partner-logo text-[22px] font-semibold tracking-[0.12em]">CINDER&#92;</span>
+    <span class="partner-logo text-[24px] font-semibold"><span class="text-[17px]">&#9679;</span> marrow</span>
+    <span class="partner-logo text-[24px] font-bold tracking-tight">fielder</span>
+  </div>
+</section>
+
+<!-- ══════════ SCENE 3 · TURNING POINT ══════════ -->
+<section id="inflection" class="px-4 pb-6 reveal-section">
+  <div class="hairline mb-4"></div>
+  <p class="mono-label mb-14">A TURNING POINT</p>
+  <h2 class="split-reveal text-[44px] leading-[1.12] tracking-[-0.02em] max-w-[700px] mb-20">Last year, studios were piloting intelligent tools. This year, they&rsquo;re rebuilding their practice around them.</h2>
+  <figure class="media-frame w-full overflow-hidden">
+    <img id="photo-wide" src="https://picsum.photos/id/180/1600/900" alt="A studio desk with a laptop and field notebook" class="w-full h-[720px] object-cover" loading="eager" />
+  </figure>
+</section>
+
+<!-- ══════════ SCENE 4 · STATS SPLIT ══════════ -->
+<section id="stats" class="px-4 pb-28">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+    <figure class="md:col-span-2 media-frame overflow-hidden">
+      <img src="https://picsum.photos/id/60/1400/1080" alt="Overhead view of a working desk with screens and tablets" class="w-full h-full min-h-[560px] object-cover" />
+    </figure>
+    <div class="flex flex-col gap-2">
+      <div class="stat-panel bg-lav">
+        <p class="stat-number" data-count="1200" data-suffix="+">0</p>
+        <p class="text-[17px] leading-snug mt-4">Practitioners surveyed<br/>across 40+ countries.</p>
+      </div>
+      <div class="stat-panel bg-sage">
+        <p class="stat-number" data-count="30" data-suffix="+">0</p>
+        <p class="text-[17px] leading-snug mt-4">Conversations with<br/>team leads and founders</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SCENE 5 · MISSION ══════════ -->
+<section id="mission" class="px-4 pb-40 reveal-section">
+  <div class="md:ml-[42%] max-w-[580px]">
+    <h3 class="text-[28px] leading-[1.3] tracking-[-0.01em] mb-10">Machine Craft 2026 charts how intelligent tooling is reshaping studio practice &mdash; at the desk, and across whole teams.</h3>
+    <p class="text-[16px] leading-[1.55] mb-6 text-neutral-800">We started this study because one question kept coming up in every studio we visited: everyone is experimenting, but nobody can see what the room next door is doing. This report is our attempt to open those doors.</p>
+    <p class="text-[16px] leading-[1.55] mb-6 text-neutral-800">The findings draw on more than a thousand practitioners &mdash; independents, in-house teams, and agencies &mdash; working across product, brand, research, and engineering-adjacent roles. We paired the survey with long-form conversations with the people steering these changes.</p>
+    <p class="text-[16px] leading-[1.55] text-neutral-800">Practice is moving faster than publishing cycles, so we&rsquo;ll keep releasing field notes through the year, including visits with teams at Vertex, Halcyon, Oxbow, Plume, Cinder, and Marrow. <a href="https://example.com/" class="underline underline-offset-4">Sign up for new releases.</a></p>
+  </div>
+</section>
+
+<!-- ══════════ SCENE 6 · QUOTE ══════════ -->
+<section id="quote" class="grid grid-cols-1 md:grid-cols-[41%_59%]">
+  <div class="bg-black text-white p-6 flex flex-col justify-between min-h-[640px]">
+    <span class="quote-mark select-none" aria-hidden="true">&ldquo;</span>
+    <figure class="self-center my-10">
+      <img src="https://picsum.photos/id/64/320/380" alt="Portrait of a studio director" class="w-[150px] h-[180px] object-cover quote-portrait" />
+    </figure>
+    <p class="mono-label text-neutral-400">ADA KOWALCZYK<br/>STUDIO DIRECTOR, HALCYON</p>
+  </div>
+  <div class="bg-sage p-6 flex items-center min-h-[640px]">
+    <blockquote id="quote-text" class="text-[52px] leading-[1.1] tracking-[-0.02em]">New instruments don&rsquo;t replace the musician. They change what music gets written &mdash; and who gets to write it.</blockquote>
+  </div>
+</section>
+
+<!-- ══════════ SCENES 7-9 · CHAPTERS ══════════ -->
+<section class="chapter bg-orange" id="chapter-01">
+  <div class="px-4 pt-4">
+    <div class="hairline-dark mb-8"></div>
+    <div class="grid grid-cols-1 md:grid-cols-[41%_1fr] gap-6">
+      <h2 class="chapter-name text-[76px] leading-[0.95] tracking-[-0.03em]">01<br/>Tools</h2>
+      <div class="max-w-[420px]">
+        <h3 class="text-[40px] leading-[1.05] tracking-[-0.02em] mb-10">The stack<br/>won&rsquo;t sit still</h3>
+        <p class="text-[16px] leading-[1.55]">Adoption has surged, but the toolbox keeps changing shape. Teams juggle twice as many off-the-shelf tools as last year, and many are quietly building their own utilities to fit how they like to work. With every release cycle the pace quickens &mdash; while dependable output quality remains the thing everyone is still chasing.</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-[41%_1fr] gap-6 items-end pt-28 pb-4">
+      <canvas role="img" class="chapter-art" data-art="1" width="571" height="369" aria-label="Generative halftone bloom artwork"></canvas>
+      <div>
+        <p class="mono-label mb-8">IN THIS CHAPTER, WE&rsquo;LL COVER:</p>
+        <ul class="chapter-list">
+          <li>Which tools actually earn a seat</li>
+          <li>The rise of homegrown utilities</li>
+          <li>Budgets, seats, and shadow tooling</li>
+          <li>Why adoption stalls after the pilot</li>
+          <li>Keeping pace without burning out</li>
+        </ul>
+        <a href="https://example.com/" class="cta-bar"><span>Read the Tools Chapter</span><span class="cta-arrow" aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter bg-lav" id="chapter-02">
+  <div class="px-4 pt-4">
+    <div class="hairline-dark mb-8"></div>
+    <div class="grid grid-cols-1 md:grid-cols-[41%_1fr] gap-6">
+      <h2 class="chapter-name text-[76px] leading-[0.95] tracking-[-0.03em]">02<br/>Craft</h2>
+      <div class="max-w-[420px]">
+        <h3 class="text-[40px] leading-[1.05] tracking-[-0.02em] mb-10">Taste is the<br/>new bottleneck</h3>
+        <p class="text-[16px] leading-[1.55]">When a first draft costs minutes instead of days, the scarce skill shifts from production to judgment. Working prototypes are becoming the default way to show an idea, and more designers are shipping code they shaped themselves. At the same time, practitioners tell us they worry about skills going soft &mdash; and about how solitary the new workflow can feel.</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-[41%_1fr] gap-6 items-end pt-28 pb-4">
+      <canvas role="img" class="chapter-art" data-art="2" width="571" height="369" aria-label="Generative solarized bloom artwork"></canvas>
+      <div>
+        <p class="mono-label mb-8">IN THIS CHAPTER, WE&rsquo;LL COVER:</p>
+        <ul class="chapter-list">
+          <li>Prototyping as the first draft</li>
+          <li>Code as a studio material</li>
+          <li>Speed, quality, and the space between</li>
+          <li>Training judgment, not just skills</li>
+          <li>From maker to conductor</li>
+        </ul>
+        <a href="https://example.com/" class="cta-bar"><span>Read the Craft Chapter</span><span class="cta-arrow" aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter bg-sage" id="chapter-03">
+  <div class="px-4 pt-4">
+    <div class="hairline-dark mb-8"></div>
+    <div class="grid grid-cols-1 md:grid-cols-[41%_1fr] gap-6">
+      <h2 class="chapter-name text-[76px] leading-[0.95] tracking-[-0.03em]">03<br/>Teams</h2>
+      <div class="max-w-[420px]">
+        <h3 class="text-[40px] leading-[1.05] tracking-[-0.02em] mb-10">Org charts<br/>meet autonomy</h3>
+        <p class="text-[16px] leading-[1.55]">The biggest shifts are happening between people, not inside tools. Leads are rewriting rituals, budgets, and role definitions on the fly, and the lines between design, product, and engineering keep smudging. The teams doing this well treat policy as a living document &mdash; written down after practice proves it, not before.</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-[41%_1fr] gap-6 items-end pt-28 pb-4">
+      <canvas role="img" class="chapter-art" data-art="3" width="571" height="369" aria-label="Generative monochrome bloom artwork with color cards"></canvas>
+      <div>
+        <p class="mono-label mb-8">IN THIS CHAPTER, WE&rsquo;LL COVER:</p>
+        <ul class="chapter-list">
+          <li>How leadership clears the runway</li>
+          <li>Roles are blurring at the edges</li>
+          <li>Rituals for messy collaboration</li>
+          <li>Policy that keeps up with practice</li>
+          <li>What hiring looks like now</li>
+        </ul>
+        <a href="https://example.com/" class="cta-bar"><span>Read the Teams Chapter</span><span class="cta-arrow" aria-hidden="true">&#8594;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SCENE 10 · FIELD NOTES CAROUSEL ══════════ -->
+<section id="cases" class="px-4 pt-5 pb-24 reveal-section">
+  <div class="hairline mb-4"></div>
+  <p class="mono-label mb-14">VIDEO FIELD NOTES</p>
+  <div class="flex items-end justify-between mb-24">
+    <h2 class="text-[44px] leading-[1.12] tracking-[-0.02em] max-w-[560px]">Six studios. Six answers to the same question.</h2>
+    <div class="flex gap-6 pb-2">
+      <button id="car-prev" class="car-btn" aria-label="Previous">&#8592;</button>
+      <button id="car-next" class="car-btn" aria-label="Next">&#8594;</button>
+    </div>
+  </div>
+  <div id="carousel" class="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth">
+    <article class="case-card">
+      <a href="https://example.com/" class="block relative">
+        <span class="case-soon">Coming soon</span>
+        <img src="https://picsum.photos/id/823/920/620?grayscale" alt="A photographer at work" class="case-img" />
+        <span class="case-bar"></span>
+      </a>
+      <h3 class="text-[24px] font-medium mt-9">Vertex</h3>
+      <p class="text-[14px] text-neutral-700 mt-3 leading-snug">Making room for<br/>new instruments</p>
+      <a href="https://example.com/" class="case-link"><span>Get notified</span><span aria-hidden="true">&#8594;</span></a>
+    </article>
+    <article class="case-card">
+      <a href="https://example.com/" class="block relative">
+        <span class="case-soon">Coming soon</span>
+        <img src="https://picsum.photos/id/331/920/620?grayscale" alt="A silhouette in a bright workshop" class="case-img" />
+        <span class="case-bar"></span>
+      </a>
+      <h3 class="text-[24px] font-medium mt-9">Halcyon</h3>
+      <p class="text-[14px] text-neutral-700 mt-3 leading-snug">Raising the bar while<br/>moving faster</p>
+      <a href="https://example.com/" class="case-link"><span>Get notified</span><span aria-hidden="true">&#8594;</span></a>
+    </article>
+    <article class="case-card">
+      <a href="https://example.com/" class="block relative">
+        <span class="case-soon">Coming soon</span>
+        <img src="https://picsum.photos/id/26/920/620?grayscale" alt="Tools of the trade laid out on a desk" class="case-img" />
+        <span class="case-bar"></span>
+      </a>
+      <h3 class="text-[24px] font-medium mt-9">Oxbow</h3>
+      <p class="text-[14px] text-neutral-700 mt-3 leading-snug">When shipping is no<br/>longer the hard part</p>
+      <a href="https://example.com/" class="case-link"><span>Get notified</span><span aria-hidden="true">&#8594;</span></a>
+    </article>
+    <article class="case-card">
+      <a href="https://example.com/" class="block relative">
+        <span class="case-soon">Coming soon</span>
+        <img src="https://picsum.photos/id/342/920/620?grayscale" alt="A quiet studio space" class="case-img" />
+        <span class="case-bar"></span>
+      </a>
+      <h3 class="text-[24px] font-medium mt-9">Plume</h3>
+      <p class="text-[14px] text-neutral-700 mt-3 leading-snug">Teaching taste at<br/>studio scale</p>
+      <a href="https://example.com/" class="case-link"><span>Get notified</span><span aria-hidden="true">&#8594;</span></a>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════ SCENE 11 · COMING SOON FEATURE ══════════ -->
+<section id="feature" class="px-4 pt-5 pb-40 reveal-section">
+  <div class="hairline mb-4"></div>
+  <p class="mono-label mb-14">COMING SOON</p>
+  <div class="md:ml-[42%]">
+    <a href="https://example.com/" class="feature-poster block relative overflow-hidden group">
+      <img src="https://picsum.photos/id/447/1400/800" alt="A figure by the water at dusk, film still" class="w-full h-[560px] object-cover" />
+      <span class="play-btn" aria-hidden="true"><span class="play-tri"></span></span>
+    </a>
+    <h3 class="text-[28px] tracking-[-0.01em] mt-16 mb-8">Inside machine-native studios</h3>
+    <p class="text-[16px] leading-[1.55] max-w-[460px] text-neutral-800">Six filmed visits with the design teams at Vertex, Halcyon, Oxbow, Plume, Cinder, and Marrow. Sit in on the workflows they&rsquo;ve rebuilt, the tradeoffs they argue about, and what changed once the whole team worked this way.</p>
+    <a href="https://example.com/" class="case-link max-w-[460px]"><span>Get notified when they&rsquo;re released</span><span aria-hidden="true">&#8594;</span></a>
+  </div>
+</section>
+
+<!-- ══════════ SCENE 12 · SUBSCRIBE ══════════ -->
+<section id="subscribe" class="bg-black text-white px-4 py-44">
+  <div class="max-w-[720px] mx-auto text-center">
+    <h2 class="text-[62px] leading-[1.05] tracking-[-0.02em] mb-10">Get new field notes<br/>&amp; the full report</h2>
+    <p class="text-[17px] text-neutral-300 mb-12 leading-relaxed">Download the report as plain text, ready to drop into any tool.<br/>Be the first to know when new episodes land.</p>
+    <form id="sub-form" class="flex max-w-[640px] mx-auto" novalidate>
+      <input id="sub-email" type="email" required placeholder="Your email address" class="sub-input flex-1" />
+      <button type="submit" class="sub-btn">Subscribe</button>
+    </form>
+    <p id="sub-msg" class="text-[13px] text-neutral-400 mt-6">By subscribing, you agree to receive updates from <a href="https://example.com/" class="underline underline-offset-2">Fieldnote Labs</a> and <a href="https://example.com/" class="underline underline-offset-2">North Loop Ventures</a> under their privacy policies.</p>
+  </div>
+</section>
+
+<!-- ══════════ SCENE 13 · METHODOLOGY ══════════ -->
+<section id="methodology" class="bg-black text-white px-4 pb-10 reveal-section">
+  <div class="grid grid-cols-1 md:grid-cols-4 method-grid">
+    <div class="method-cell">
+      <p class="mono-label text-neutral-400 mb-10">METHODOLOGY</p>
+      <p class="text-[28px] leading-[1.25]">This study<br/>draws from</p>
+    </div>
+    <div class="method-cell">
+      <p class="method-number" data-count="1214">0</p>
+      <p class="text-[16px] text-neutral-300 mt-6">Survey responses</p>
+    </div>
+    <div class="method-cell">
+      <p class="method-number" data-count="30" data-suffix="+">0</p>
+      <p class="text-[16px] text-neutral-300 mt-6">Interviews</p>
+    </div>
+    <div class="method-cell">
+      <p class="method-number" data-count="60" data-suffix="+">0</p>
+      <p class="text-[16px] text-neutral-300 mt-6">Public sources</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ══════════ SCENE 14 · FOOTER ══════════ -->
+<footer class="bg-black text-white px-4 pt-20 overflow-hidden">
+  <h2 id="footer-mark" class="footer-mark select-none" aria-label="Machine Craft">Machine Craft<span class="footer-tm">™</span></h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 items-end mt-24 mb-10">
+    <div class="flex gap-24">
+      <div>
+        <p class="mono-label text-neutral-500 mb-8">STUDY PARTNERS</p>
+        <ul class="footer-links grid grid-cols-2 gap-x-16">
+          <li><a href="https://example.com/">Vertex</a></li>
+          <li><a href="https://example.com/">Plume</a></li>
+          <li><a href="https://example.com/">Halcyon</a></li>
+          <li><a href="https://example.com/">Cinder</a></li>
+          <li><a href="https://example.com/">Oxbow</a></li>
+          <li><a href="https://example.com/">Marrow</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="mono-label text-neutral-500 mb-8">REPORT</p>
+        <ul class="footer-links">
+          <li><a href="https://example.com/">Read the Report</a></li>
+          <li><a href="https://example.com/">About</a></li>
+          <li><a href="https://example.com/">Field Notes</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="footer-year" class="footer-year text-right select-none" aria-hidden="true">2026</div>
+  </div>
+  <div class="hairline-light"></div>
+  <div class="flex items-center justify-between py-5 text-[14px] text-neutral-300 flex-wrap gap-4">
+    <p>&copy;2026 Fieldnote Labs, North Loop Ventures. All rights reserved</p>
+    <p class="flex items-center gap-3"><a href="https://example.com/" class="font-semibold">&#10022; Fieldnote Labs</a><span class="text-neutral-600">&bull;</span><a href="https://example.com/">north loop capital</a></p>
+    <p class="text-neutral-500">Built with Canvas &amp; GSAP by hand</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

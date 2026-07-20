@@ -1,0 +1,122 @@
+{
+ "P0.load": {
+  "ok": true,
+  "ev": "复刻也有开场:黑起后顶部彩色色场铺开、大标题落位、末帧露出 Scroll to read 与底部合作方一排,进场过程在(3票:3-0)"
+ },
+ "P0.enter": {
+  "ok": true,
+  "ev": "首屏有居下大标题、顶部彩色色场、右下 Scroll to read、底部合作方一排,Hero 构图齐(标题文案换成 Machine Craft)(3票:3-0)"
+ },
+ "P0.reenter.sticky_nav": {
+  "ok": true,
+  "ev": "下滚顶栏收起、上滚带橙色高亮重新露出 logo/Read the Report/About/Case Studies(3票:3-0)"
+ },
+ "P0.hover.scroll_to_read": {
+  "ok": false,
+  "ev": "复刻未采到该触发帧带(同协议录像下无此效果/靶/轨)"
+ },
+ "P1.enter": {
+  "ok": true,
+  "ev": "大字引言与办公室对谈照片在,引言页主体忠实;顶部合作方 logo 一排未见(3票:2-1)"
+ },
+ "P1.hscroll.stats": {
+  "ok": false,
+  "ev": "复刻未采到该触发帧带(同协议录像下无此效果/靶/轨)"
+ },
+ "P1.hover.nav_about": {
+  "ok": false,
+  "ev": "复刻未采到该触发帧带(同协议录像下无此效果/靶/轨)"
+ },
+ "P1.hover.nav_case_studies": {
+  "ok": false,
+  "ev": "复刻未采到该触发帧带(同协议录像下无此效果/靶/轨)"
+ },
+ "P1.reenter.sticky_nav": {
+  "ok": true,
+  "ev": "复刻上滚位帧同样露出吸顶顶栏并带橙色高亮胶囊,下滚隐藏/上滚恢复行为在(品牌改名 MC 26/Machine Craft 但效果在)"
+ },
+ "P2.enter.stats": {
+  "ok": true,
+  "ev": "紫色统计块里数字从小一路递增到终值、配桌前双人照,数字揭示在(第二列 Interviews 停在 0)(3票:2-1)"
+ },
+ "P3.enter": {
+  "ok": true,
+  "ev": "居中多段说明文字整体淡入就位、上方有一条深色图带"
+ },
+ "P4.enter.chapter_number": {
+  "ok": false,
+  "ev": "上半黑底引语卡+下半橙色章节条在,但左下巨号 01/Tools 的逐帧成型没出现(3票:0-3)"
+ },
+ "P5.enter.tools_orange": {
+  "ok": true,
+  "ev": "大面积橙色版面+紫色清单+左下花卉+黑条 CTA 在,章节正文身份忠实(仅见一个 CTA)(3票:3-0)"
+ },
+ "P5.hover.read_the_tools_chapter": {
+  "ok": false,
+  "ev": "悬停前后黑条一直是黑底白字,没反转成白底黑字(3票:0-3)"
+ },
+ "P5.hover.read_the_craft_chapter": {
+  "ok": false,
+  "ev": "该页 Craft 黑条悬停前后无黑底↔白底反转(3票:0-3)"
+ },
+ "P6.enter.chapter_number": {
+  "ok": true,
+  "ev": "整幅紫色铺入、左侧大编号 02 Craft 与标题、下半花卉清单一并进场,大编号在(3票:3-0)"
+ },
+ "P7.enter.teams_identity": {
+  "ok": true,
+  "ev": "绿灰版面+Teams/03 大标题+右侧说明段+清单齐,章节身份在(3票:3-0)"
+ },
+ "P7.hover.read_the_teams_chapter": {
+  "ok": false,
+  "ev": "悬停前后黑条无黑底→白底反转(3票:0-3)"
+ },
+ "P7.hover.read_the_craft_chapter": {
+  "ok": false,
+  "ev": "本页 Craft 黑条悬停前后无黑白反转(3票:0-3)"
+ },
+ "P8.enter.cases_intro": {
+  "ok": true,
+  "ev": "大字标题+底部一排黑白视频卡+左右箭头提示,案例区进场在(3票:3-0)"
+ },
+ "P8.hscroll.video_cards": {
+  "ok": false,
+  "ev": "帧间底排视频卡未见明显横向位移换卡,横滑浏览没复现(3票:0-3)"
+ },
+ "P8.hover.read_the_teams_chapter": {
+  "ok": false,
+  "ev": "悬停前后黑条无黑底→白底反转(3票:0-3)"
+ },
+ "P9.enter.case_cards": {
+  "ok": true,
+  "ev": "上半三张灰底卡带紫色顶条与 Get notified、下半人物视频带播放钮,身份在(3票:3-0)"
+ },
+ "P9.hover.case_card_stripe": {
+  "ok": false,
+  "ev": "悬停前后卡片没有手风琴展开、隐藏的问题文字没露出(3票:0-3)"
+ },
+ "P9.hover.get_notified": {
+  "ok": false,
+  "ev": "悬停 Get notified 前后卡片未展开、隐藏问题文字未出(3票:0-3)"
+ },
+ "P9.hover.cards_container": {
+  "ok": false,
+  "ev": "帧间三卡文字浓淡无可辨变化(3票:0-3)"
+ },
+ "P10.enter": {
+  "ok": true,
+  "ev": "顶部人物视频+标题+说明段+Get notified 链接、底部黑底大字浮出,构图在"
+ },
+ "P10.hover.get_notified_when": {
+  "ok": false,
+  "ev": "悬停前后下划线链接未变成黑色填充反白条(3票:0-3)"
+ },
+ "P11.enter.footer_stats": {
+  "ok": true,
+  "ev": "黑底页尾三列数字进场时逐步累加到终值、上部带订阅表单,数字递增在(3票:3-0)"
+ },
+ "P11.hover.submit": {
+  "ok": true,
+  "ev": "悬停提交按钮由橙色变成另一实色填充(复刻变黄、非紫),悬停换色在(3票:2-1)"
+ }
+}

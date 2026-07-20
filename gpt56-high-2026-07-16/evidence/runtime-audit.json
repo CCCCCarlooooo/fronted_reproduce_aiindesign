@@ -1,0 +1,252 @@
+{
+  "url": "file:///Users/carlo/dev/fronted_reproduce_aiindesign/gpt56-high-2026-07-16/index.html",
+  "results": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scrollHeight": 11231,
+      "maxScroll": 10331,
+      "sections": {
+        "#hero": 0,
+        "#founders": 1584,
+        ".chapter-tools": 4353,
+        ".chapter-craft": 5130,
+        ".chapter-teams": 6374,
+        "#case-studies": 7488,
+        "#coming-soon": 8509,
+        "#footer": 9545
+      },
+      "checkpoints": [
+        {
+          "scrollY": 0,
+          "loaderDisplay": "none",
+          "playingVideos": [
+            "https://framerusercontent.com/assets/60TSo4WrKzA27Mp4KCDTmVbhc.webm"
+          ],
+          "centerText": ""
+        },
+        {
+          "scrollY": 1584,
+          "loaderDisplay": "none",
+          "playingVideos": [],
+          "centerText": ""
+        },
+        {
+          "scrollY": 4353,
+          "loaderDisplay": "none",
+          "playingVideos": [
+            "https://framerusercontent.com/assets/GxhkDLcDBfujafaVJCiFKoxE.webm"
+          ],
+          "centerText": "The most-used AI design tools"
+        },
+        {
+          "scrollY": 5130,
+          "loaderDisplay": "none",
+          "playingVideos": [
+            "https://framerusercontent.com/assets/lL79Fmd1Pvt2WDRdt11xdoPD3Uw.webm"
+          ],
+          "centerText": "02Craft Craft in the ageof infinite output Everyone is shipping faster. But is speed good "
+        },
+        {
+          "scrollY": 6374,
+          "loaderDisplay": "none",
+          "playingVideos": [
+            "https://framerusercontent.com/assets/n4xIX9MPpD5lGFog1WLZ2I2UQyY.webm"
+          ],
+          "centerText": "03Teams Redesigningthe design org AI gave designers new powers. Now organizations need to "
+        },
+        {
+          "scrollY": 7488,
+          "loaderDisplay": "none",
+          "playingVideos": [],
+          "centerText": ""
+        },
+        {
+          "scrollY": 8509,
+          "loaderDisplay": "none",
+          "playingVideos": [
+            "https://framerusercontent.com/assets/4RQvaMC0xNnbs7f7MQ6hG63i2pM.webm"
+          ],
+          "centerText": "Inside AI-native design teams Seven video case studies with the design teams at Anthropic,"
+        },
+        {
+          "scrollY": 10331,
+          "loaderDisplay": "none",
+          "playingVideos": [],
+          "centerText": "REPORT PARTNERS Anthropic Framer Stripe Sierra Notion Shopify Linear REPORT Read the Repor"
+        }
+      ],
+      "maxConcurrentVideos": 1,
+      "loaderCleared": true,
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "scrollHeight": 10554,
+      "maxScroll": 9786,
+      "sections": {
+        "#hero": 0,
+        "#founders": 1452,
+        ".chapter-tools": 4089,
+        ".chapter-craft": 4734,
+        ".chapter-teams": 5846,
+        "#case-studies": 6828,
+        "#coming-soon": 7849,
+        "#footer": 8873
+      },
+      "checkpoints": [
+        {
+          "scrollY": 0,
+          "loaderDisplay": "none",
+          "playingVideos": [
+            "https://framerusercontent.com/assets/60TSo4WrKzA27Mp4KCDTmVbhc.webm"
+          ],
+          "centerText": ""
+        },
+        {
+          "scrollY": 1452,
+          "loaderDisplay": "none",
+          "playingVideos": [],
+          "centerText": ""
+        },
+        {
+          "scrollY": 4089,
+          "loaderDisplay": "none",
+          "playingVideos": [
+            "https://framerusercontent.com/assets/GxhkDLcDBfujafaVJCiFKoxE.webm"
+          ],
+          "centerText": "What makes tools stick (+ why many don\u2019t)"
+        },
+        {
+          "scrollY": 4734,
+          "loaderDisplay": "none",
+          "playingVideos": [
+            "https://framerusercontent.com/assets/lL79Fmd1Pvt2WDRdt11xdoPD3Uw.webm"
+          ],
+          "centerText": "IN THIS CHAPTER, WE\u2019LL COVER:"
+        },
+        {
+          "scrollY": 5846,
+          "loaderDisplay": "none",
+          "playingVideos": [
+            "https://framerusercontent.com/assets/n4xIX9MPpD5lGFog1WLZ2I2UQyY.webm"
+          ],
+          "centerText": "IN THIS CHAPTER, WE\u2019LL COVER:"
+        },
+        {
+          "scrollY": 6828,
+          "loaderDisplay": "none",
+          "playingVideos": [],
+          "centerText": ""
+        },
+        {
+          "scrollY": 7849,
+          "loaderDisplay": "none",
+          "playingVideos": [
+            "https://framerusercontent.com/assets/4RQvaMC0xNnbs7f7MQ6hG63i2pM.webm"
+          ],
+          "centerText": ""
+        },
+        {
+          "scrollY": 9786,
+          "loaderDisplay": "none",
+          "playingVideos": [],
+          "centerText": "REPORT PARTNERS Anthropic Framer Stripe Sierra Notion Shopify Linear REPORT Read the Repor"
+        }
+      ],
+      "maxConcurrentVideos": 1,
+      "loaderCleared": true,
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "scrollHeight": 11951,
+      "maxScroll": 10871,
+      "sections": {
+        "#hero": 0,
+        "#founders": 1584,
+        ".chapter-tools": 4533,
+        ".chapter-craft": 5490,
+        ".chapter-teams": 6914,
+        "#case-studies": 8208,
+        "#coming-soon": 9229,
+        "#footer": 10265
+      },
+      "checkpoints": [
+        {
+          "scrollY": 0,
+          "loaderDisplay": "none",
+          "playingVideos": [
+            "https://framerusercontent.com/assets/60TSo4WrKzA27Mp4KCDTmVbhc.webm"
+          ],
+          "centerText": "AI in Design"
+        },
+        {
+          "scrollY": 1584,
+          "loaderDisplay": "none",
+          "playingVideos": [],
+          "centerText": ""
+        },
+        {
+          "scrollY": 4533,
+          "loaderDisplay": "none",
+          "playingVideos": [
+            "https://framerusercontent.com/assets/GxhkDLcDBfujafaVJCiFKoxE.webm"
+          ],
+          "centerText": "IN THIS CHAPTER, WE\u2019LL COVER: The most-used AI design tools The toolstack that's multiplyi"
+        },
+        {
+          "scrollY": 5490,
+          "loaderDisplay": "none",
+          "playingVideos": [
+            "https://framerusercontent.com/assets/lL79Fmd1Pvt2WDRdt11xdoPD3Uw.webm"
+          ],
+          "centerText": "02Craft Craft in the ageof infinite output Everyone is shipping faster. But is speed good "
+        },
+        {
+          "scrollY": 6914,
+          "loaderDisplay": "none",
+          "playingVideos": [
+            "https://framerusercontent.com/assets/n4xIX9MPpD5lGFog1WLZ2I2UQyY.webm"
+          ],
+          "centerText": "03Teams Redesigningthe design org AI gave designers new powers. Now organizations need to "
+        },
+        {
+          "scrollY": 8208,
+          "loaderDisplay": "none",
+          "playingVideos": [],
+          "centerText": "Coming soon Stripe Creating theconditions for adoption How do you build a culture that ena"
+        },
+        {
+          "scrollY": 9229,
+          "loaderDisplay": "none",
+          "playingVideos": [
+            "https://framerusercontent.com/assets/4RQvaMC0xNnbs7f7MQ6hG63i2pM.webm"
+          ],
+          "centerText": "Inside AI-native design teams"
+        },
+        {
+          "scrollY": 10871,
+          "loaderDisplay": "none",
+          "playingVideos": [],
+          "centerText": "Ai in Design\u2122"
+        }
+      ],
+      "maxConcurrentVideos": 1,
+      "loaderCleared": true,
+      "consoleErrors": [],
+      "pageErrors": []
+    }
+  ],
+  "passed": true
+}
