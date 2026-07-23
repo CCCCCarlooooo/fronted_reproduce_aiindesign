@@ -21,6 +21,9 @@ Thumbs.db
 
 # Large agent transcripts (keep local; share via zip if needed)
 **/session/
+# Exception: keep opus48 session in git
+!opus48-high-2026-07-17/session/
+!opus48-high-2026-07-17/session/**
 
 # Rank-report visual evidence (pairs / repros / ref screenshots)
 rank_report/pairs/
